@@ -514,10 +514,6 @@ if st.button('開始する＜化成＞'):
             img = OpenpyxlImage(temp_path)
             # Excelのセルに画像を貼り付ける位置を指定
             
-            st.write(n_base_row)
-            st.write(n_base_column)
-            st.write(row_offset)
-            st.write(col_offset)
         
             
             cell_address = ws.cell(row=n_base_row + row_offset + 2, column=n_base_column + col_offset).coordinate
