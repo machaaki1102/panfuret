@@ -287,7 +287,7 @@ if st.button('開始する＜BB＞'):
                 pass
 
             # Streamlitで画像を表示
-            st.image(original_img)
+            # st.image(original_img)
 
 
             # 画像のリサイズ
