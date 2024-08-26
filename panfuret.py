@@ -265,6 +265,12 @@ if st.button('開始する＜BB＞'):
             # Pillowで画像を開く
             original_img = PILImage.open(img_path)
 
+# EXIFデータを削除して画像を保存
+            original_img = original_img.convert("RGB")
+            original_img.save(img_path)
+
+# Streamlitで画像を表示
+            st.image(original_img)
             # 画像のリサイズ
             new_size = (190, 257)  # 新しいサイズを指定
             resized_img = original_img.resize(new_size)
