@@ -649,19 +649,21 @@ if st.button('セットアップする'):
     
     st.success('🔥 🔥 セットアップ完了しました🔥 🔥 ')
 
-# すべてのチェックを外すボタン　＃
+# すべてのチェックを外すボタン
 if st.button('すべてのチェックを外す'):
     # session_stateを使って各チェックボックスをリセット
-    for fertilizer_name in fertilizer_names:
-        if fertilizer_name in st.session_state:
-            st.session_state[fertilizer_name] = False
-    for fertilizer_name_kasei in fertilizer_names_kasei:
-        if fertilizer_name_kasei in st.session_state:
-            st.session_state[fertilizer_name_kasei] = False
-    for fertilizer_name_ekihi in fertilizer_names_ekihi:
-        if fertilizer_name_ekihi in st.session_state:
-            st.session_state[fertilizer_name_ekihi] = False
-
+    try:
+        for fertilizer_name in fertilizer_names:
+            if fertilizer_name in st.session_state:
+                st.session_state[fertilizer_name] = False
+        for fertilizer_name_kasei in fertilizer_names_kasei:
+            if fertilizer_name_kasei in st.session_state:
+                st.session_state[fertilizer_name_kasei] = False
+        for fertilizer_name_ekihi in fertilizer_names_ekihi:
+            if fertilizer_name_ekihi in st.session_state:
+                st.session_state[fertilizer_name_ekihi] = False
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
 
 # 3つのカラムを作成
 col4, col5, col6 = st.columns(3)
