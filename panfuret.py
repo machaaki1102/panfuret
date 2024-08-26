@@ -9,7 +9,7 @@ from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
 # タイトルを追加
-st.title('パンフレット作成')
+st.title('パンフレット作成🛠️')
 
 
 # ファイルパスを指定してExcelファイルを読み込む
@@ -105,7 +105,7 @@ selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
 
-if st.button('セットアップする'):
+if st.button('セットアップする🎯'):
 
     if selected_fertilizer_count > 0:
         # ワークブックをロードする
@@ -735,7 +735,7 @@ if st.button('セットアップする'):
         # 変更を保存する
         wb.save('ekihi_tem_finish.xlsx')
     
-    st.success('セットアップ完了しました！')
+    st.success('🔥 🔥 セットアップ完了しました🔥 🔥 ')
         
 
 
