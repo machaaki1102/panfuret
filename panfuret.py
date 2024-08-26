@@ -266,8 +266,8 @@ if st.button('開始する＜BB＞'):
             original_img = PILImage.open(img_path)
 
 # EXIFデータを削除して画像を保存
-            original_img = original_img.convert("RGB")
-            original_img.save(img_path)
+          #  original_img = original_img.convert("RGB")
+           # original_img.save(img_path)
 
 # Streamlitで画像を表示
             st.image(original_img)
