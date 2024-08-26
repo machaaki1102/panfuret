@@ -267,8 +267,7 @@ if st.button('開始する＜BB＞'):
             
             from PIL import Image, ExifTags
 
-
-    # EXIF情報を確認して回転修正する
+# EXIF情報を確認して回転修正する
             try:
                 for orientation in ExifTags.TAGS.keys():
                     if ExifTags.TAGS[orientation] == 'Orientation':
@@ -280,9 +279,9 @@ if st.button('開始する＜BB＞'):
                     if orientation == 3:
                         original_img = original_img.rotate(180, expand=True)
                     elif orientation == 6:
-                        original_img = original_img.rotate(270, expand=True)
+                        original_img = original_img.rotate(90, expand=True)  # 右回りに90度
                     elif orientation == 8:
-                        original_img = original_img.rotate(90, expand=True)
+                        original_img = original_img.rotate(270, expand=True)  # 左回りに90度
             except (AttributeError, KeyError, IndexError):
                 # EXIF情報がない場合やエラーが発生した場合はそのまま表示
                 pass
@@ -290,7 +289,6 @@ if st.button('開始する＜BB＞'):
             # Streamlitで画像を表示
             st.image(original_img)
 
-            
 
             # 画像のリサイズ
             new_size = (190, 257)  # 新しいサイズを指定
