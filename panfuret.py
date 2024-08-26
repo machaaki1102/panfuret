@@ -264,7 +264,11 @@ if st.button('開始する＜BB＞'):
             
             # Pillowで画像を開く
             original_img = PILImage.open(img_path)
-            # EXIF情報を確認して回転修正する
+            
+            from PIL import Image, ExifTags
+
+
+    # EXIF情報を確認して回転修正する
             try:
                 for orientation in ExifTags.TAGS.keys():
                     if ExifTags.TAGS[orientation] == 'Orientation':
@@ -285,6 +289,8 @@ if st.button('開始する＜BB＞'):
 
             # Streamlitで画像を表示
             st.image(original_img)
+
+            
 
             # 画像のリサイズ
             new_size = (190, 257)  # 新しいサイズを指定
