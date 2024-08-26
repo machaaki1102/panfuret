@@ -479,45 +479,13 @@ if st.button('セットアップする'):
 
                 # 画像をシートに追加
                 ws.add_image(img)
+
                 # 一時ファイルを削除
                 #os.remove(temp_path) 
             
             else:
                 # ファイルが存在しない場合は何もしない
                 pass
-
-
-#            if os.path.exists(img_path2):
-#                
-#                # Pillowで画像を開く
-#                original_img2 = PILImage.open(img_path2)
-#
-#                # 画像のリサイズ
-#                new_size2 = (440, 170)  # 新しいサイズを指定
-#                resized_img2 = original_img2.resize(new_size2)
-#            
-#                # 一時的なファイルを作成
-#                with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file2:
-#                    temp_path2 = tmp_file2.name
-#                    resized_img2.save(temp_path2)
-#                    st.write(f"Image temporarily saved at {temp_path}")
-
-                # openpyxlのImageクラスでリサイズされた画像を読み込む
-#                img2 = OpenpyxlImage(temp_path2)
-                # Excelのセルに画像を貼り付ける位置を指定
-#                cell_address2 = ws.cell(row=n_base_row + row_offset + 10, column=n_base_column + col_offset - 1).coordinate
-    
-    #            ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset - 6).coordinate
-#                img2.anchor = cell_address2
-
-                # 画像をシートに追加
-#                ws.add_image(img2)
-                # 一時ファイルを削除
-                #os.remove(temp_path) 
-            
-#            else:
-                # ファイルが存在しない場合は何もしない
-#                pass
 
             i = i + 1
         # 変更を保存する
