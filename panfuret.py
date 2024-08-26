@@ -827,57 +827,6 @@ with col6:
 #    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
 #)
 
-#＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-import pandas as pd
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
-from io import BytesIO
-import streamlit as st
-
-def excel_to_pdf(excel_file, sheet_name, range_string):
-    # Excelファイルを読み込む
-    df = pd.read_excel(excel_file, sheet_name=sheet_name, header=None)
-    
-    # データ範囲を指定する
-    min_row, max_row = 1, 42
-    min_col, max_col = 1, 13
-    df_range = df.iloc[min_row-1:max_row, min_col-1:max_col]
-
-    # PDFに書き込む
-    pdf_buffer = BytesIO()
-    with PdfPages(pdf_buffer) as pdf:
-        fig, ax = plt.subplots(figsize=(8, 11))  # サイズは調整可能
-        ax.axis('tight')
-        ax.axis('off')
-        ax.table(cellText=df_range.values, colLabels=df_range.columns, cellLoc='center', loc='center')
-        pdf.savefig(fig)
-    
-    pdf_buffer.seek(0)
-    return pdf_buffer
-
-def main():
-    st.title("Excel to PDF Converter")
-    
-    # 既存のExcelファイルのパスを指定
-    excel_file_path = 'bb_tem_finish.xlsx'
-    
-    # PDFに変換するシートと範囲を指定
-    sheet_name = "BB_テンプレ"  # ここでシート名を指定
-    range_string = "A1:M42"  # ここで範囲を指定
-    
-    # PDFを生成する
-    pdf_buffer = excel_to_pdf(excel_file_path, sheet_name, range_string)
-    
-    # ダウンロードボタンを表示する
-    st.download_button(
-        label="Download PDF",
-        data=pdf_buffer,
-        file_name="excel_sheet.pdf",
-        mime="application/pdf"
-    )
-
-if __name__ == "__main__":
-    main()
 
 import pandas as pd
 import pdfkit
