@@ -803,11 +803,26 @@ with col6:
 
 
 import streamlit as st
-import pandas as pd
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
+from openpyxl.utils import copy
+
+def copy_sheet(source_sheet, target_sheet):
+    for row in source_sheet.iter_rows():
+        for cell in row:
+            new_cell = target_sheet.cell(row=cell.row, column=cell.column, value=cell.value)
+            if cell.has_style:
+                new_cell.font = copy.copy(cell.font)
+                new_cell.border = copy.copy(cell.border)
+                new_cell.fill = copy.copy(cell.fill)
+                new_cell.number_format = copy.copy(cell.number_format)
+                new_cell.protection = copy.copy(cell.protection)
+                new_cell.alignment = copy.copy(cell.alignment)
 
 # ボタンを作成
 if st.button('Excelファイルを統合する'):
+    # 新しいExcelファイルを作成
+    new_wb = Workbook()
+
     # 各ファイルのシートを読み込む
     ekihi_wb = load_workbook('ekihi_tem_finish.xlsx')
     ekihi_ws = ekihi_wb['液肥_テンプレ']
@@ -818,24 +833,18 @@ if st.button('Excelファイルを統合する'):
     bb_wb = load_workbook('bb_tem_finish.xlsx')
     bb_ws = bb_wb['BB_テンプレ']
 
-    # 新しいブックを作成
-    new_wb = load_workbook('ekihi_tem_finish.xlsx')
-    new_ws = new_wb.active
-    new_ws.title = "液肥_テンプレ"
-
-    # 液肥_テンプレをコピー
-    for row in ekihi_ws.iter_rows():
-        new_ws.append([cell.value for cell in row])
+    # 液肥_テンプレを新しいワークブックにコピー
+    ekihi_copy = new_wb.active
+    ekihi_copy.title = '液肥_テンプレ'
+    copy_sheet(ekihi_ws, ekihi_copy)
 
     # 化成_テンプレを追加
     kasei_copy = new_wb.create_sheet(title="化成_テンプレ")
-    for row in kasei_ws.iter_rows():
-        kasei_copy.append([cell.value for cell in row])
+    copy_sheet(kasei_ws, kasei_copy)
 
     # BB_テンプレを追加
     bb_copy = new_wb.create_sheet(title="BB_テンプレ")
-    for row in bb_ws.iter_rows():
-        bb_copy.append([cell.value for cell in row])
+    copy_sheet(bb_ws, bb_copy)
 
     # 結合されたファイルを保存
     new_wb.save('combined_templates.xlsx')
