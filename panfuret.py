@@ -735,7 +735,7 @@ if st.button('セットアップする'):
         # 変更を保存する
         wb.save('ekihi_tem_finish.xlsx')
     
-st.success('セットアップ完了しました！')
+    st.success('セットアップ完了しました！')
         
 
 
