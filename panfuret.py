@@ -516,6 +516,10 @@ if st.button('開始する＜化成＞'):
             
             st.write(n_base_row)
             st.write(n_base_column)
+            st.write(row_offset)
+            st.write(col_offset)
+        
+            
             cell_address = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset - 6).coordinate
             img.anchor = cell_address
 
