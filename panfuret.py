@@ -340,7 +340,7 @@ if st.button('開始する＜化成＞'):
     wb = openpyxl.load_workbook('kasei_tem.xlsx')
     # ワークシートを選択する（シート名を指定する）
     ws = wb['化成_テンプレ']
-
+    st.write(selected_fertilizer_count_kasei) 
     # 必要数
     count_number_kasei = selected_fertilizer_count_kasei  ###ここがチェックされた数字となる。
     #テンプレートを作るところ。
