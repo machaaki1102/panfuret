@@ -270,7 +270,7 @@ if st.button('開始する＜BB＞'):
            # original_img.save(img_path)
 
 # Streamlitで画像を表示
-            st.image(original_img)
+#            st.image(original_img)
             # 画像のリサイズ
             new_size = (190, 257)  # 新しいサイズを指定
             resized_img = original_img.resize(new_size)
