@@ -468,7 +468,6 @@ if st.button('セットアップする'):
                 with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file:
                     temp_path = tmp_file.name
                     resized_img.save(temp_path)
-    #                st.write(f"Image temporarily saved at {temp_path}")
 
                 # openpyxlのImageクラスでリサイズされた画像を読み込む
                 img = OpenpyxlImage(temp_path)
@@ -649,10 +648,6 @@ if st.button('セットアップする'):
     
     st.success('🔥 🔥 セットアップ完了しました🔥 🔥 ')
         
-
-
-
-
 # 3つのカラムを作成
 col4, col5, col6 = st.columns(3)
 
@@ -660,7 +655,7 @@ with col4:
     # Excelファイルを読み込む
     with open('bb_tem_finish.xlsx', 'rb') as file:  # ここでファイルを開きます
         excel_data = file.read()  # インデントされていることを確認
-    # ダウンロードボタンの作成
+# ダウンロードボタンの作成
     st.download_button(
         label="Download Excel File＜BB＞",  # ボタンのラベル
         data=excel_data,  # ダウンロードするデータ
@@ -668,12 +663,10 @@ with col4:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
-# 2列目に球技のチェックボックスを作成
 with col5:
-#    st.header("化成")
+    # Excelファイルを読み込む
     with open('kasei_tem_finish.xlsx', 'rb') as file:
         excel_data_ekihi = file.read()
-
 # ダウンロードボタンの作成
     st.download_button(
         label="Download Excel File＜化成＞",  # ボタンのラベル
@@ -682,13 +675,11 @@ with col5:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
-# 3列目に魚のチェックボックスを作成
+ 
 with col6:
-#    st.header("化成")
-# ファイルをバイナリモードで開く
+
     with open('ekihi_tem_finish.xlsx', 'rb') as file:
         excel_data_ekihi = file.read()
-
 # ダウンロードボタンの作成
     st.download_button(
         label="Download Excel File＜液肥＞",  # ボタンのラベル
@@ -696,30 +687,3 @@ with col6:
         file_name='ekihi_tem_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
-
-#========
-
-# ファイルをバイナリモードで開く
-#with open('bb_tem_finish.xlsx', 'rb') as file:
-#    excel_data = file.read()
-
-# ダウンロードボタンの作成
-#st.download_button(
-#    label="Download Excel File＜化成＞",  # ボタンのラベル
-#    data=excel_data,  # ダウンロードするデータ
-#    file_name='bb_tem_finish.xlsx',  # ダウンロード時のファイル名
-#    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
-#)
-
-
-# ファイルをバイナリモードで開く
-#with open('ekihi_tem_finish.xlsx', 'rb') as file:
-#    excel_data_ekihi = file.read()
-
-# ダウンロードボタンの作成
-#st.download_button(
-#    label="Download Excel File＜液肥＞",  # ボタンのラベル
-#    data=excel_data_ekihi,  # ダウンロードするデータ
-#    file_name='ekihi_tem_finish.xlsx',  # ダウンロード時のファイル名
-#    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
-#)
