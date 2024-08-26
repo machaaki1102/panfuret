@@ -34,6 +34,7 @@ df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
 df_kasei = load_data('銘柄データ_化成.xlsx')
 
+
 # '肥料名称' カラムから NaN を取り除く
 #df = df.dropna(subset=['肥料名称'])
 
