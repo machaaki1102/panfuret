@@ -22,9 +22,16 @@ def load_data(file_path):
     return df
 
 #キャッシュクリア
-if st.button('Clear Cache'):
+#if st.button('Clear Cache'):
+#    st.cache_data.clear()
+# すべてリセットボタン
+if st.button('すべてリセット'):
+    # session_stateをすべてクリア
+    st.session_state.clear()
+    # アプリを再読み込み
+    st.experimental_rerun()
+    #キャッシュクリア
     st.cache_data.clear()
-
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
