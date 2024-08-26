@@ -800,11 +800,11 @@ with col6:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
-
+#========
 
 import streamlit as st
 from openpyxl import load_workbook, Workbook
-from openpyxl.utils import copy
+import copy
 
 def copy_sheet(source_sheet, target_sheet):
     for row in source_sheet.iter_rows():
