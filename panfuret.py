@@ -520,7 +520,7 @@ if st.button('開始する＜化成＞'):
             st.write(col_offset)
         
             
-            cell_address = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset).coordinate
+            cell_address = ws.cell(row=n_base_row + row_offset + 2, column=n_base_column + col_offset).coordinate
             img.anchor = cell_address
 
             # 画像をシートに追加
