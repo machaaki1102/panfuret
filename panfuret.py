@@ -9,8 +9,7 @@ from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
 # タイトルを追加
-st.title('パンフレット作成🛠️')
-
+st.title('🛠️パンフレット作成🛠️')
 
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
@@ -29,10 +28,6 @@ if st.button('Clear Cache'):
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
 df_kasei = load_data('銘柄データ_化成.xlsx')
-
-
-# '肥料名称' カラムから NaN を取り除く
-#df = df.dropna(subset=['肥料名称'])
 
 #肥料名称のリストをつくる。
 fertilizer_names = df['肥料名称'].tolist()
@@ -105,7 +100,7 @@ selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
 
-if st.button('セットアップする🎯'):
+if st.button('セットアップする'):
 
     if selected_fertilizer_count > 0:
         # ワークブックをロードする
