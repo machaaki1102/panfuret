@@ -492,7 +492,6 @@ if st.button('セットアップする'):
         wb.save('kasei_tem_finish.xlsx')
 
 
-
     if selected_fertilizer_count_kasei > 0:
         # ワークブックをロードする
         wb = openpyxl.load_workbook('ekihi_tem.xlsx')
@@ -503,7 +502,7 @@ if st.button('セットアップする'):
         count_number_ekihi = selected_fertilizer_count_ekihi  ###ここがチェックされた数字となる。
         #テンプレートを作るところ。
         count_number_ekihi = count_number_ekihi - 1  # ここでチェックをつけられた分だけコピーすることになる。0からカウント
-        #count = (m // 2)
+
 
         for i in range(0, count_number_ekihi):
             row_count = 1
@@ -610,7 +609,7 @@ if st.button('セットアップする'):
             script_dir = os.path.dirname(os.path.abspath(__file__))
             # 絶対パスを生成
             img_path = os.path.join(script_dir, '容器', f'{fertilizer}.jpg')
-            img_path2 = os.path.join(script_dir, '肥効曲線', f'{fertilizer}.jpg')
+#            img_path2 = os.path.join(script_dir, '肥効曲線', f'{fertilizer}.jpg')
 
             # ファイルの存在を確認
             if os.path.exists(img_path):
@@ -644,37 +643,37 @@ if st.button('セットアップする'):
                 # ファイルが存在しない場合は何もしない
                 pass
 
-            if os.path.exists(img_path2):
+#            if os.path.exists(img_path2):
                 
                 # Pillowで画像を開く
-                original_img2 = PILImage.open(img_path2)
+#                original_img2 = PILImage.open(img_path2)
 
                 # 画像のリサイズ
-                new_size2 = (440, 170)  # 新しいサイズを指定
-                resized_img2 = original_img2.resize(new_size2)
+#                new_size2 = (440, 170)  # 新しいサイズを指定
+#                resized_img2 = original_img2.resize(new_size2)
             
                 # 一時的なファイルを作成
-                with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file2:
-                    temp_path2 = tmp_file2.name
-                    resized_img2.save(temp_path2)
+#                with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file2:
+#                    temp_path2 = tmp_file2.name
+#                    resized_img2.save(temp_path2)
     #                st.write(f"Image temporarily saved at {temp_path}")
 
                 # openpyxlのImageクラスでリサイズされた画像を読み込む
-                img2 = OpenpyxlImage(temp_path2)
+#                img2 = OpenpyxlImage(temp_path2)
                 # Excelのセルに画像を貼り付ける位置を指定
-                cell_address2 = ws.cell(row=n_base_row + row_offset + 10, column=n_base_column + col_offset - 1).coordinate
+#                cell_address2 = ws.cell(row=n_base_row + row_offset + 10, column=n_base_column + col_offset - 1).coordinate
     
     #            ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset - 6).coordinate
-                img2.anchor = cell_address2
+#                img2.anchor = cell_address2
 
                 # 画像をシートに追加
-                ws.add_image(img2)
+#                ws.add_image(img2)
                 # 一時ファイルを削除
                 #os.remove(temp_path) 
             
-            else:
+#            else:
                 # ファイルが存在しない場合は何もしない
-                pass
+#                pass
 
             i = i + 1
         # 変更を保存する
