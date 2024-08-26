@@ -800,6 +800,58 @@ with col6:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
+
+
+import streamlit as st
+import pandas as pd
+from openpyxl import load_workbook
+
+# ボタンを作成
+if st.button('Excelファイルを統合する'):
+    # 各ファイルのシートを読み込む
+    ekihi_wb = load_workbook('ekihi_tem_finish.xlsx')
+    ekihi_ws = ekihi_wb['液肥_テンプレ']
+
+    kasei_wb = load_workbook('kasei_tem_finish.xlsx')
+    kasei_ws = kasei_wb['化成_テンプレ']
+
+    bb_wb = load_workbook('bb_tem_finish.xlsx')
+    bb_ws = bb_wb['BB_テンプレ']
+
+    # 新しいブックを作成
+    new_wb = load_workbook('ekihi_tem_finish.xlsx')
+    new_ws = new_wb.active
+    new_ws.title = "液肥_テンプレ"
+
+    # 液肥_テンプレをコピー
+    for row in ekihi_ws.iter_rows():
+        new_ws.append([cell.value for cell in row])
+
+    # 化成_テンプレを追加
+    kasei_copy = new_wb.create_sheet(title="化成_テンプレ")
+    for row in kasei_ws.iter_rows():
+        kasei_copy.append([cell.value for cell in row])
+
+    # BB_テンプレを追加
+    bb_copy = new_wb.create_sheet(title="BB_テンプレ")
+    for row in bb_ws.iter_rows():
+        bb_copy.append([cell.value for cell in row])
+
+    # 結合されたファイルを保存
+    new_wb.save('combined_templates.xlsx')
+    st.success('ファイルを結合しました！')
+    st.write("結合されたファイルは 'combined_templates.xlsx' に保存されました。")
+
+    # ダウンロードリンクを提供
+    with open('combined_templates.xlsx', 'rb') as f:
+        st.download_button(
+            label="結合されたExcelファイルをダウンロード",
+            data=f,
+            file_name="combined_templates.xlsx"
+        )
+
+
+
 # ファイルをバイナリモードで開く
 #with open('bb_tem_finish.xlsx', 'rb') as file:
 #    excel_data = file.read()
