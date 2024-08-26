@@ -693,7 +693,7 @@ if st.button('開始する＜液肥＞'):
             original_img = PILImage.open(img_path)
 
             # 画像のリサイズ
-            new_size = (190, 257)  # 新しいサイズを指定
+            new_size = (230, 270)  # 新しいサイズを指定
             resized_img = original_img.resize(new_size)
           
             # 一時的なファイルを作成
@@ -706,7 +706,7 @@ if st.button('開始する＜液肥＞'):
             # openpyxlのImageクラスでリサイズされた画像を読み込む
             img = OpenpyxlImage(temp_path)
             # Excelのセルに画像を貼り付ける位置を指定
-            cell_address = ws.cell(row=n_base_row  + 2, column=n_base_column + col_offset ).coordinate
+            cell_address = ws.cell(row=n_base_row  + 3, column=n_base_column + col_offset ).coordinate
             img.anchor = cell_address
 
             # 画像をシートに追加
