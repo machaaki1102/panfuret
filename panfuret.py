@@ -108,6 +108,7 @@ selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 #st.write(selected_sports_count)
 #st.write(selected_fish_count)
 if st.button('セットアップする'):
+
     if selected_fertilizer_count > 0:
         # ワークブックをロードする
         wb = openpyxl.load_workbook('bb_tem.xlsx')
@@ -742,6 +743,8 @@ if st.button('セットアップする'):
             i = i + 1
         # 変更を保存する
         wb.save('ekihi_tem_finish.xlsx')
+    
+st.success('セットアップ完了しました！')
         
 
 
