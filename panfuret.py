@@ -99,14 +99,12 @@ with col3:
 #st.write('選択された球技:', selected_sports)
 #st.write('選択された魚:', selected_fish)
 
-# 選択されたアイテムの数を表示
+# 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
-#st.write(selected_fruits_count)
-#st.write(selected_sports_count)
-#st.write(selected_fish_count)
+
 if st.button('セットアップする'):
 
     if selected_fertilizer_count > 0:
@@ -261,8 +259,6 @@ if st.button('セットアップする'):
                 # Pillowで画像を開く
                 original_img = PILImage.open(img_path)
 
-                # Streamlitで画像を表示
-                # st.image(original_img)
                 # 画像のリサイズ
                 new_size = (190, 257)  # 新しいサイズを指定
                 resized_img = original_img.resize(new_size)
@@ -330,7 +326,7 @@ if st.button('セットアップする'):
         wb = openpyxl.load_workbook('kasei_tem.xlsx')
         # ワークシートを選択する（シート名を指定する）
         ws = wb['化成_テンプレ']
-        st.write(selected_fertilizer_count_kasei) 
+
         # 必要数
         count_number_kasei = selected_fertilizer_count_kasei  ###ここがチェックされた数字となる。
         #テンプレートを作るところ。
@@ -420,8 +416,8 @@ if st.button('セットアップする'):
                     # セルのフォントスタイルをデフォルトにリセット
                     cell.font = Font()
 
-            #ここからデータを入れるところ
-        # 選択されたデータ数分入力する。リスト分0スタートなので、+1とする。
+        #ここからデータを入れるところ
+        #選択されたデータ数分入力する。リスト分0スタートなので、+1とする。
         mm = number
 
         i = 0
@@ -429,7 +425,7 @@ if st.button('セットアップする'):
         for fertilizer in selected_fertilizer_kasei:
             selected_row = df_kasei[df_kasei['肥料名称'] == fertilizer]
             
-                # cはセル番地でH5を取得、NPK、速攻性、被覆尿素まで入れる
+            # cはセル番地でH5を取得、NPK、速攻性、被覆尿素まで入れる
             n_base_row = 4
             n_base_column = 2
 
@@ -474,9 +470,6 @@ if st.button('セットアップする'):
                 n = ws.cell(row=n_base_row + row_offset + 5 + k,  column=n_base_column + col_offset + 5)
                 n.value = selected_row[f'特徴{k}'].values[0]
 
-            #i = i + 1
-
-            #wb.save('kasei_tem_finish2.xlsx')
             # 容器,肥効曲線の画像を貼り付ける
             # スクリプトのディレクトリを取得
             script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -502,10 +495,8 @@ if st.button('セットアップする'):
 
                 # openpyxlのImageクラスでリサイズされた画像を読み込む
                 img = OpenpyxlImage(temp_path)
-                # Excelのセルに画像を貼り付ける位置を指定
                 
-            
-                
+                # Excelのセルに画像を貼り付ける位置を指定                       
                 cell_address = ws.cell(row=n_base_row + row_offset + 2, column=n_base_column + col_offset).coordinate
                 img.anchor = cell_address
 
