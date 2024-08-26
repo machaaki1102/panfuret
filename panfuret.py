@@ -513,6 +513,9 @@ if st.button('開始する＜化成＞'):
             # openpyxlのImageクラスでリサイズされた画像を読み込む
             img = OpenpyxlImage(temp_path)
             # Excelのセルに画像を貼り付ける位置を指定
+            
+            st.write(n_base_row)
+            st.write(n_base_column)
             cell_address = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset - 6).coordinate
             img.anchor = cell_address
 
