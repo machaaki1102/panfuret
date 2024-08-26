@@ -831,9 +831,8 @@ with col6:
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
-import openpyxl
-import streamlit as st
 from io import BytesIO
+import streamlit as st
 
 def excel_to_pdf(excel_file, sheet_name, range_string):
     # Excelファイルを読み込む
@@ -859,24 +858,24 @@ def excel_to_pdf(excel_file, sheet_name, range_string):
 def main():
     st.title("Excel to PDF Converter")
     
-    # アップロードされたファイルを読み込む
-    uploaded_file = st.file_uploader("Upload Excel file", type="xlsx")
+    # 既存のExcelファイルのパスを指定
+    excel_file_path = 'bb_tem_finish.xlsx'
     
-    if uploaded_file:
-        # PDFに変換するシートと範囲を指定
-        sheet_name = "BB_テンプレ"  # ここでシート名を指定
-        range_string = "A1:M42"  # ここで範囲を指定
-        
-        # PDFを生成する
-        pdf_buffer = excel_to_pdf(bb_tem_finish.xlsx, sheet_name, range_string)
-        
-        # ダウンロードボタンを表示する
-        st.download_button(
-            label="Download PDF",
-            data=pdf_buffer,
-            file_name="excel_sheet.pdf",
-            mime="application/pdf"
-        )
+    # PDFに変換するシートと範囲を指定
+    sheet_name = "BB_テンプレ"  # ここでシート名を指定
+    range_string = "A1:M42"  # ここで範囲を指定
+    
+    # PDFを生成する
+    pdf_buffer = excel_to_pdf(excel_file_path, sheet_name, range_string)
+    
+    # ダウンロードボタンを表示する
+    st.download_button(
+        label="Download PDF",
+        data=pdf_buffer,
+        file_name="excel_sheet.pdf",
+        mime="application/pdf"
+    )
 
 if __name__ == "__main__":
     main()
+
