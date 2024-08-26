@@ -264,6 +264,7 @@ if st.button('開始する＜BB＞'):
             
             # Pillowで画像を開く
             original_img = PILImage.open(img_path)
+            st.image(original_img)
 
             # 画像のリサイズ
             new_size = (190, 257)  # 新しいサイズを指定
