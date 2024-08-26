@@ -35,9 +35,6 @@ fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
 fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
 
 # 選択されたアイテムのリストを作成
-#selected_fruits = []
-##selected_sports = []
-#selected_fish = []
 selected_fertilizer = []
 selected_fertilizer_ekihi = []
 selected_fertilizer_kasei = []
@@ -58,21 +55,12 @@ st.markdown(
 # 3つのカラムを作成
 col1, col2, col3 = st.columns(3)
 
-# 1列目にフルーツのチェックボックスを作成
-#with col1:
-#    st.header("BB")
-#    for fruit in fruits:
-#        if st.checkbox(fruit, key=fruit):
-#            selected_fruits.append(fruit)
-
-
 # 1列目に球技のチェックボックスを作成
 with col1:
     st.header("BB")
     for fertilizer_name in fertilizer_names:
         if st.checkbox(fertilizer_name, key=fertilizer_name):
             selected_fertilizer.append(fertilizer_name)
-
 
 # 2列目に球技のチェックボックスを作成
 with col2:
@@ -87,12 +75,6 @@ with col3:
     for fertilizer_name_ekihi in fertilizer_names_ekihi:
         if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
-
-
-# 選択されたアイテムのリストを表示
-#st.write('選択された肥料:', selected_fertilizer)
-#st.write('選択された球技:', selected_sports)
-#st.write('選択された魚:', selected_fish)
 
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
