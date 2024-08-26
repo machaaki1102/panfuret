@@ -264,6 +264,26 @@ if st.button('開始する＜BB＞'):
             
             # Pillowで画像を開く
             original_img = PILImage.open(img_path)
+            # EXIF情報を確認して回転修正する
+            try:
+                for orientation in ExifTags.TAGS.keys():
+                    if ExifTags.TAGS[orientation] == 'Orientation':
+                        break
+                exif = original_img._getexif()
+                if exif is not None:
+                    orientation = exif.get(orientation, 1)
+
+                    if orientation == 3:
+                        original_img = original_img.rotate(180, expand=True)
+                    elif orientation == 6:
+                        original_img = original_img.rotate(270, expand=True)
+                    elif orientation == 8:
+                        original_img = original_img.rotate(90, expand=True)
+            except (AttributeError, KeyError, IndexError):
+                # EXIF情報がない場合やエラーが発生した場合はそのまま表示
+                pass
+
+            # Streamlitで画像を表示
             st.image(original_img)
 
             # 画像のリサイズ
