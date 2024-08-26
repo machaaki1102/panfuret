@@ -25,7 +25,7 @@ def load_data(file_path):
 #if st.button('Clear Cache'):
 #    st.cache_data.clear()
 # すべてリセットボタン
-if st.button('すべてリセット'):
+if st.button('All Clear'):
     # session_stateをすべてクリア
     st.session_state.clear()
     # アプリを再読み込み
