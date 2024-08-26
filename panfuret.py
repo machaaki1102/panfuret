@@ -25,6 +25,17 @@ def load_data(file_path):
 if st.button('Clear Cache'):
     st.cache_data.clear()
 
+# すべてのチェックを外すボタン
+if st.button('すべてのチェックを外す'):
+    # session_stateを使って各チェックボックスをリセット
+    for fertilizer_name in fertilizer_names:
+        st.session_state[fertilizer_name] = False
+    for fertilizer_name_kasei in fertilizer_names_kasei:
+        st.session_state[fertilizer_name_kasei] = False
+    for fertilizer_name_ekihi in fertilizer_names_ekihi:
+        st.session_state[fertilizer_name_ekihi] = False
+
+
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
 df_kasei = load_data('銘柄データ_化成.xlsx')
