@@ -27,8 +27,8 @@ def load_data(file_path):
     return df
 
 #キャッシュクリア
-#if st.button('Clear Cache'):
-#    st.cache_data.clear()
+if st.button('Clear Cache'):
+    st.cache_data.clear()
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
