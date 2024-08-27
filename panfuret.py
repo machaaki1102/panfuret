@@ -11,6 +11,14 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 # タイトルを追加
 st.title('🛠️パンフレット作成🛠️')
 
+# リセットボタンを表示
+if st.button('チェックマークをリセット'):
+    st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
+    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
+    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
+#    st.experimental_rerun()
+
+
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
 def load_data(file_path):
@@ -25,6 +33,7 @@ if st.button('cash Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
+
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
