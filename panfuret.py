@@ -23,20 +23,31 @@ def load_data(file_path):
 #キャッシュクリア
 #if st.button('Clear Cache'):
 #    st.cache_data.clear()
+#if st.button('All Clear'):
+    # キャッシュをクリア
+#    st.cache_data.clear()
+#    st.cache_resource.clear()
+    # セッションステートをクリア
+#    st.session_state.clear()
+
+    # アプリを再読み込み
+#    st.experimental_rerun()
+
+#    df = load_data('銘柄データ_BB.xlsx')
+#    df_ekihi = load_data('銘柄データ_液肥.xlsx')
+#    df_kasei = load_data('銘柄データ_化成.xlsx')
+# キャッシュとセッションステートのクリア
 if st.button('All Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
+
     # セッションステートをクリア
-    st.session_state.clear()
+    for key in st.session_state.keys():
+        del st.session_state[key]
 
     # アプリを再読み込み
     st.experimental_rerun()
-
-    df = load_data('銘柄データ_BB.xlsx')
-    df_ekihi = load_data('銘柄データ_液肥.xlsx')
-    df_kasei = load_data('銘柄データ_化成.xlsx')
-
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
@@ -91,41 +102,22 @@ col1, col2, col3 = st.columns(3)
 
 
 #============================================
-#with col1:
-#    st.header("BB")
-#    for i, fertilizer_name in enumerate(fertilizer_names):
-#        if st.checkbox(fertilizer_name, key=f"bb_{i}_{fertilizer_name}"):
-#            selected_fertilizer.append(fertilizer_name)
-
-#with col2:
-#    st.header("化成")
-#    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
-#        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}_{fertilizer_name_kasei}"):
-#            selected_fertilizer_kasei.append(fertilizer_name_kasei)
-
-#with col3:
-#    st.header("液肥")
-#    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
-#        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}_{fertilizer_name_ekihi}"):
-#            selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
-
-#=========================
 with col1:
     st.header("BB")
     for i, fertilizer_name in enumerate(fertilizer_names):
-        if st.checkbox(fertilizer_name, key=f"bb_{i}"):
+        if st.checkbox(fertilizer_name, key=f"bb_{i}_{fertilizer_name}"):
             selected_fertilizer.append(fertilizer_name)
 
 with col2:
     st.header("化成")
     for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
-        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}"):
+        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}_{fertilizer_name_kasei}"):
             selected_fertilizer_kasei.append(fertilizer_name_kasei)
 
 with col3:
     st.header("液肥")
     for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
-        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}"):
+        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}_{fertilizer_name_ekihi}"):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
 
 
