@@ -25,19 +25,15 @@ def load_data(file_path):
 #if st.button('Clear Cache'):
 #    st.cache_data.clear()
 if st.button('All Clear'):
-    #キャッシュクリア
-#    st.cache_data.clear()
-    # session_stateをすべてクリア
-#    st.session_state.clear()
-    # アプリを再読み込み
-     st.experimental_rerun()
-    # session_stateをすべてクリア
-#    st.session_state.clear()
     # キャッシュをクリア
-#    st.cache_data.clear()
-#    st.cache_resource.clear()
+    st.cache_data.clear()
+    st.cache_resource.clear()
 
+    # セッションステートをクリア
+    st.session_state.clear()
 
+    # アプリを再読み込み
+    st.experimental_rerun()
 
 
 df = load_data('銘柄データ_BB.xlsx')
