@@ -8,6 +8,10 @@ import tempfile
 from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
+# タイトルより上にテキストを追加
+st.markdown("# 上に表示するテキストや要素")
+st.markdown("---")  # タイトルとの間に水平線を挿入
+
 # タイトルを追加
 st.title('🛠️パンフレット作成🛠️')
 
