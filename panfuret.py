@@ -125,21 +125,31 @@ selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
 # カスタムCSSでボタンのスタイルを変更
+# カスタムCSSを追加
 st.markdown(
     """
     <style>
-    .stButton > button {
-        background-color: #4CAF50; /* 背景色を緑に */
+    /* 特定のボタンのIDを使ってスタイルを指定 */
+    #setup-button {
+        background-color: #FF5733; /* ボタンの背景色をオレンジに */
         color: white; /* 文字色を白に */
-        border-radius: 10px; /* 角を丸く */
+        border: none; /* ボーダーを取り除く */
+        border-radius: 5px; /* 角を丸く */
         padding: 10px 20px; /* パディングを追加 */
+        cursor: pointer; /* カーソルをポインターに */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-if st.button('セットアップする'):
+# 特定のIDを持つボタンを作成
+button_html = '<button id="setup-button">セットアップする</button>'
+button_clicked = st.markdown(button_html, unsafe_allow_html=True)
+
+# ボタンのクリックを検出するためのトリック
+if st.button('Hidden Button', key='hidden_button'):
+#if st.button('セットアップする'):
 
     if selected_fertilizer_count > 0:
         # ワークブックをロードする
