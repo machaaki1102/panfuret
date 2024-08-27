@@ -28,12 +28,15 @@ if st.button('All Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
-
     # セッションステートをクリア
     st.session_state.clear()
 
     # アプリを再読み込み
     #st.experimental_rerun()
+
+    df = load_data('銘柄データ_BB.xlsx')
+    df_ekihi = load_data('銘柄データ_液肥.xlsx')
+    df_kasei = load_data('銘柄データ_化成.xlsx')
 
 
 df = load_data('銘柄データ_BB.xlsx')
