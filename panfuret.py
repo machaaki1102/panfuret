@@ -124,6 +124,20 @@ selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
+# カスタムCSSでボタンのスタイルを変更
+st.markdown(
+    """
+    <style>
+    .stButton > button {
+        background-color: #4CAF50; /* 背景色を緑に */
+        color: white; /* 文字色を白に */
+        border-radius: 10px; /* 角を丸く */
+        padding: 10px 20px; /* パディングを追加 */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 if st.button('セットアップする'):
 
