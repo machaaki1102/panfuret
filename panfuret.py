@@ -92,25 +92,42 @@ col1, col2, col3 = st.columns(3)
 
 
 #============================================
+#with col1:
+#    st.header("BB")
+#    for i, fertilizer_name in enumerate(fertilizer_names):
+#        if st.checkbox(fertilizer_name, key=f"bb_{i}_{fertilizer_name}"):
+#            selected_fertilizer.append(fertilizer_name)
+
+#with col2:
+#    st.header("化成")
+#    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
+#        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}_{fertilizer_name_kasei}"):
+#            selected_fertilizer_kasei.append(fertilizer_name_kasei)
+
+#with col3:
+#    st.header("液肥")
+#    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
+#        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}_{fertilizer_name_ekihi}"):
+#            selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
+
+#=========================
 with col1:
     st.header("BB")
     for i, fertilizer_name in enumerate(fertilizer_names):
-        if st.checkbox(fertilizer_name, key=f"bb_{i}_{fertilizer_name}"):
+        if st.checkbox(fertilizer_name, key=f"bb_{i}"):
             selected_fertilizer.append(fertilizer_name)
 
 with col2:
     st.header("化成")
     for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
-        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}_{fertilizer_name_kasei}"):
+        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}"):
             selected_fertilizer_kasei.append(fertilizer_name_kasei)
 
 with col3:
     st.header("液肥")
     for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
-        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}_{fertilizer_name_ekihi}"):
+        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}"):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
-
-
 
 
 
