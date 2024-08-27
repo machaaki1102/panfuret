@@ -75,7 +75,7 @@ with col1:
     #st.header("BB")
     # ヘッダーの文字サイズを小さくする
     st.markdown(
-        "<h3 style='font-size:40px;'>BB</h3>",  # 'font-size'でサイズを指定
+        "<h3 style='font-size:30px;'>BB</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
     )
     for i, fertilizer_name in enumerate(fertilizer_names):
@@ -88,7 +88,11 @@ with col1:
 
 # 2列目に球技のチェックボックスを作成
 with col2:
-    st.header("化成")
+    #st.header("化成")
+    st.markdown(
+        "<h3 style='font-size:30px;'>化成</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
     for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
         checkbox_value = st.session_state.selected_fertilizer_kasei[i]
         if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei, value=checkbox_value):
@@ -99,7 +103,11 @@ with col2:
 
 # 3列目に魚のチェックボックスを作成
 with col3:
-    st.header("液肥")
+    #st.header("液肥")
+    st.markdown(
+        "<h3 style='font-size:30px;'>液肥</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
     for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
         checkbox_value = st.session_state.selected_fertilizer_ekihi[i]
         if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi, value=checkbox_value):
