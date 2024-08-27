@@ -9,7 +9,7 @@ from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
 # タイトルをページの最上部に配置
-st.title('🛠️パンフレット作成🛠️')
+st.write('🛠️パンフレット作成🛠️')
 
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
