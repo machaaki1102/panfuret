@@ -14,8 +14,7 @@ st.title('🛠️パンフレット作成🛠️')
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
 def load_data(file_path):
-    #df = pd.read_csv(file_path)  # 例: CSVファイルの読み込み
-    #df = pd.read_excel('銘柄データ_BB.xlsx')
+    #読み取り
     df = pd.read_excel(file_path)
     # '肥料名称' カラムから NaN を取り除く
     df = df.dropna(subset=['肥料名称'])
@@ -32,7 +31,7 @@ if st.button('All Clear'):
     st.session_state.clear()
 
     # アプリを再読み込み
-    #st.experimental_rerun()
+    st.experimental_rerun()
 
     df = load_data('銘柄データ_BB.xlsx')
     df_ekihi = load_data('銘柄データ_液肥.xlsx')
