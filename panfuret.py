@@ -26,11 +26,16 @@ def load_data(file_path):
 #    st.cache_data.clear()
 if st.button('All Clear'):
     #キャッシュクリア
-    st.cache_data.clear()
+#    st.cache_data.clear()
+    # session_stateをすべてクリア
+#    st.session_state.clear()
+    # アプリを再読み込み
+#    st.experimental_rerun()
     # session_stateをすべてクリア
     st.session_state.clear()
-    # アプリを再読み込み
-    st.experimental_rerun()
+    # キャッシュをクリア
+    st.cache_data.clear()
+    st.cache_resource.clear()
 
 
 
