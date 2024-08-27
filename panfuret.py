@@ -62,7 +62,7 @@ with col1:
     for fertilizer_name in fertilizer_names:
         if st.checkbox(fertilizer_name, key=fertilizer_name):
             selected_fertilizer.append(fertilizer_name)
-
+    st.write(f"{st.session_state.fertilizer_name}が好きなんですね！")
 # 2列目に球技のチェックボックスを作成
 with col2:
     st.header("化成")
