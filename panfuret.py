@@ -9,7 +9,11 @@ from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
 # タイトルをページの最上部に配置
-st.title('🛠️パンフレット作成🛠️')
+#st.title('🛠️パンフレット作成🛠️')
+st.markdown(
+        "<h3 style='font-size:50px;'>🛠️パンフレット作成🛠️</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
 
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
