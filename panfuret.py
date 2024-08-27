@@ -730,10 +730,9 @@ with col5:
         file_name='kasei_tem_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
-
  
 with col6:
-
+    # Excelファイルを読み込む
     with open('ekihi_tem_finish.xlsx', 'rb') as file:
         excel_data_ekihi = file.read()
 # ダウンロードボタンの作成
