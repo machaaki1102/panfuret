@@ -53,7 +53,7 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 #肥料名称のリストをつくる。
 #fertilizer_names = df['肥料名称'].tolist()
 ##fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
-fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
+#fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
 
 # 選択されたアイテムのリストを作成
 #selected_fertilizer = []
