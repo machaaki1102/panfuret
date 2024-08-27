@@ -698,3 +698,13 @@ with col6:
         file_name='ekihi_tem_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
+if st.button('All Clear'):
+    # キャッシュをクリア
+    #st.cache_data.clear()
+    #st.cache_resource.clear()
+
+    # セッションステートをクリア
+    #st.session_state.clear()
+
+    # アプリを再読み込み
+    st.experimental_rerun()
