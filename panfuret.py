@@ -30,12 +30,12 @@ if st.button('All Clear'):
     # session_stateをすべてクリア
 #    st.session_state.clear()
     # アプリを再読み込み
-#    st.experimental_rerun()
+     st.experimental_rerun()
     # session_stateをすべてクリア
-    st.session_state.clear()
+#    st.session_state.clear()
     # キャッシュをクリア
-    st.cache_data.clear()
-    st.cache_resource.clear()
+#    st.cache_data.clear()
+#    st.cache_resource.clear()
 
 
 
