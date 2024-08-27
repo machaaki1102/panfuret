@@ -25,13 +25,13 @@ if st.button('cash Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
-#    st.rerun()
+    st.rerun()  # アプリをリロード
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
 df_kasei = load_data('銘柄データ_化成.xlsx')
 
-#肥料名称のリストをつくる。
+# 肥料名称のリストを作る
 fertilizer_names = df['肥料名称'].tolist()
 fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
 fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
@@ -41,13 +41,11 @@ selected_fertilizer = []
 selected_fertilizer_ekihi = []
 selected_fertilizer_kasei = []
 
-
 st.markdown(
     """
     <style>
     .main .block-container {
         max-width: 1000px;
-#       padding: 1rem 1rem;
     }
     </style>
     """,
@@ -70,13 +68,14 @@ if st.button('チェックマークをリセット'):
     st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
     st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
-    st.rerun()
+    st.rerun()  # リセット後に再描画
 
 # 1列目に球技のチェックボックスを作成
 with col1:
     st.header("BB")
     for i, fertilizer_name in enumerate(fertilizer_names):
-        if st.checkbox(fertilizer_name, key=fertilizer_name, value=st.session_state.selected_fertilizer_bb[i]):
+        checkbox_value = st.session_state.selected_fertilizer_bb[i]
+        if st.checkbox(fertilizer_name, key=fertilizer_name, value=checkbox_value):
             selected_fertilizer.append(fertilizer_name)
             st.session_state.selected_fertilizer_bb[i] = True
         else:
@@ -86,7 +85,8 @@ with col1:
 with col2:
     st.header("化成")
     for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
-        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei, value=st.session_state.selected_fertilizer_kasei[i]):
+        checkbox_value = st.session_state.selected_fertilizer_kasei[i]
+        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei, value=checkbox_value):
             selected_fertilizer_kasei.append(fertilizer_name_kasei)
             st.session_state.selected_fertilizer_kasei[i] = True
         else:
@@ -96,16 +96,17 @@ with col2:
 with col3:
     st.header("液肥")
     for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
-        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi, value=st.session_state.selected_fertilizer_ekihi[i]):
+        checkbox_value = st.session_state.selected_fertilizer_ekihi[i]
+        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi, value=checkbox_value):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
             st.session_state.selected_fertilizer_ekihi[i] = True
         else:
             st.session_state.selected_fertilizer_ekihi[i] = False
-
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
+
 
 if st.button('セットアップする'):
 
