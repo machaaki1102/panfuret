@@ -22,8 +22,17 @@ def load_data(file_path):
     return df
 
 #キャッシュクリア
-if st.button('Clear Cache'):
+#if st.button('Clear Cache'):
+#    st.cache_data.clear()
+if st.button('All Clear'):
+    #キャッシュクリア
     st.cache_data.clear()
+    # session_stateをすべてクリア
+    st.session_state.clear()
+    # アプリを再読み込み
+    st.experimental_rerun()
+
+
 
 
 df = load_data('銘柄データ_BB.xlsx')
@@ -618,7 +627,7 @@ if st.button('セットアップする'):
                 original_img = PILImage.open(img_path)
 
                 # 画像のリサイズ
-                new_size = (190, 290)  # 新しいサイズを指定
+                new_size = (210, 270)  # 新しいサイズを指定
                 resized_img = original_img.resize(new_size)
             
                 # 一時的なファイルを作成
