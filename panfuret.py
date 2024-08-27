@@ -75,7 +75,7 @@ with col1:
     #st.header("BB")
     # ヘッダーの文字サイズを小さくする
     st.markdown(
-        "<h3 style='font-size:20px;'>BB</h3>",  # 'font-size'でサイズを指定
+        "<h3 style='font-size:40px;'>BB</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
     )
     for i, fertilizer_name in enumerate(fertilizer_names):
