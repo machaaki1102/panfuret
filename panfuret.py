@@ -33,7 +33,7 @@ if st.button('All Clear'):
     st.session_state.clear()
 
     # アプリを再読み込み
-    st.experimental_rerun()
+    #st.experimental_rerun()
 
 
 df = load_data('銘柄データ_BB.xlsx')
