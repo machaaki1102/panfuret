@@ -20,27 +20,8 @@ def load_data(file_path):
     df = df.dropna(subset=['肥料名称'])
     return df
 
-#キャッシュクリア
-#if st.button('Clear Cache'):
-#    st.cache_data.clear()
-#if st.button('All Clear'):
-    # キャッシュをクリア
-#    st.cache_data.clear()
-#    st.cache_resource.clear()
-    # セッションステートをクリア
-#    st.session_state.clear()
-
-    # アプリを再読み込み
-#    st.experimental_rerun()
-
-#    df = load_data('銘柄データ_BB.xlsx')
-#    df_ekihi = load_data('銘柄データ_液肥.xlsx')
-#    df_kasei = load_data('銘柄データ_化成.xlsx')
 # キャッシュとセッションステートのクリア
-if st.button('All Clear'):
-    # セッションステートをクリア
-    for key in st.session_state.keys():
-        del st.session_state[key]
+if st.button('cash Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
