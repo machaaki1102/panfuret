@@ -69,7 +69,7 @@ if st.button('チェックマークをリセット'):
     st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
     st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
-    st.experimental_rerun()
+#    st.experimental_rerun()
 
 # 1列目に球技のチェックボックスを作成
 with col1:
