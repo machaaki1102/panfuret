@@ -56,27 +56,50 @@ st.markdown(
 # 3つのカラムを作成
 col1, col2, col3 = st.columns(3)
 
+# チェックボックスの状態をセッションステートに保存
+if 'selected_fertilizer_bb' not in st.session_state:
+    st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
+if 'selected_fertilizer_kasei' not in st.session_state:
+    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
+if 'selected_fertilizer_ekihi' not in st.session_state:
+    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
+
+# リセットボタンを表示
+if st.button('チェックマークをリセット'):
+    st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
+    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
+    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
+    st.experimental_rerun()
+
 # 1列目に球技のチェックボックスを作成
 with col1:
     st.header("BB")
-    for fertilizer_name in fertilizer_names:
-        if st.checkbox(fertilizer_name, key=fertilizer_name):
+    for i, fertilizer_name in enumerate(fertilizer_names):
+        if st.checkbox(fertilizer_name, key=fertilizer_name, value=st.session_state.selected_fertilizer_bb[i]):
             selected_fertilizer.append(fertilizer_name)
+            st.session_state.selected_fertilizer_bb[i] = True
+        else:
+            st.session_state.selected_fertilizer_bb[i] = False
 
 # 2列目に球技のチェックボックスを作成
 with col2:
     st.header("化成")
-    for fertilizer_name_kasei in fertilizer_names_kasei:
-        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei):
+    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
+        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei, value=st.session_state.selected_fertilizer_kasei[i]):
             selected_fertilizer_kasei.append(fertilizer_name_kasei)
+            st.session_state.selected_fertilizer_kasei[i] = True
+        else:
+            st.session_state.selected_fertilizer_kasei[i] = False
 
 # 3列目に魚のチェックボックスを作成
 with col3:
     st.header("液肥")
-    for fertilizer_name_ekihi in fertilizer_names_ekihi:
-        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
+    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
+        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi, value=st.session_state.selected_fertilizer_ekihi[i]):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
-
+            st.session_state.selected_fertilizer_ekihi[i] = True
+        else:
+            st.session_state.selected_fertilizer_ekihi[i] = False
 
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)

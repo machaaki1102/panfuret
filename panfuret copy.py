@@ -14,24 +14,17 @@ st.title('🛠️パンフレット作成🛠️')
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
 def load_data(file_path):
-    #df = pd.read_csv(file_path)  # 例: CSVファイルの読み込み
-    #df = pd.read_excel('銘柄データ_BB.xlsx')
+    #読み取り
     df = pd.read_excel(file_path)
     # '肥料名称' カラムから NaN を取り除く
     df = df.dropna(subset=['肥料名称'])
     return df
 
-#キャッシュクリア
-#if st.button('Clear Cache'):
-#    st.cache_data.clear()
-# すべてリセットボタン
-if st.button('All Clear'):
-    #キャッシュクリア
+# キャッシュとセッションステートのクリア
+if st.button('cash Clear'):
+    # キャッシュをクリア
     st.cache_data.clear()
-    # session_stateをすべてクリア
-    st.session_state.clear()
-    # アプリを再読み込み
-    st.experimental_rerun()
+    st.cache_resource.clear()
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
@@ -84,11 +77,11 @@ with col3:
         if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
 
+
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
-
 
 if st.button('セットアップする'):
 
@@ -306,7 +299,7 @@ if st.button('セットアップする'):
         wb.save('bb_tem_finish.xlsx')
 
 
-    if selected_fertilizer_count_ekihi > 0:
+    if selected_fertilizer_count_kasei > 0:
         # ワークブックをロードする
         wb = openpyxl.load_workbook('kasei_tem.xlsx')
         # ワークシートを選択する（シート名を指定する）
@@ -499,7 +492,7 @@ if st.button('セットアップする'):
         wb.save('kasei_tem_finish.xlsx')
 
 
-    if selected_fertilizer_count_kasei > 0:
+    if selected_fertilizer_count_ekihi > 0:
         # ワークブックをロードする
         wb = openpyxl.load_workbook('ekihi_tem.xlsx')
         # ワークシートを選択する（シート名を指定する）
@@ -625,7 +618,7 @@ if st.button('セットアップする'):
                 original_img = PILImage.open(img_path)
 
                 # 画像のリサイズ
-                new_size = (190, 290)  # 新しいサイズを指定
+                new_size = (190, 330)  # 新しいサイズを指定
                 resized_img = original_img.resize(new_size)
             
                 # 一時的なファイルを作成
@@ -682,10 +675,9 @@ with col5:
         file_name='kasei_tem_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
-
  
 with col6:
-
+    # Excelファイルを読み込む
     with open('ekihi_tem_finish.xlsx', 'rb') as file:
         excel_data_ekihi = file.read()
 # ダウンロードボタンの作成
