@@ -9,7 +9,7 @@ from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
 # タイトルをページの最上部に配置
-st.write('🛠️パンフレット作成🛠️')
+st.title('🛠️パンフレット作成🛠️')
 
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
@@ -72,7 +72,12 @@ if st.button('チェックマークをリセット＜最後のクリックは消
 
 # 1列目に球技のチェックボックスを作成
 with col1:
-    st.header("BB")
+    #st.header("BB")
+    # ヘッダーの文字サイズを小さくする
+    st.markdown(
+        "<h3 style='font-size:20px;'>BB</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
     for i, fertilizer_name in enumerate(fertilizer_names):
         checkbox_value = st.session_state.selected_fertilizer_bb[i]
         if st.checkbox(fertilizer_name, key=fertilizer_name, value=checkbox_value):
