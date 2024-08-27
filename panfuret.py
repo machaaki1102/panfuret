@@ -9,16 +9,16 @@ from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
 # タイトルを追加
-#st.title('🛠️パンフレット作成🛠️')
+st.title('🛠️パンフレット作成🛠️')
 
 # ファイルパスを指定してExcelファイルを読み込む
-#@st.cache_data
-#def load_data(file_path):
+@st.cache_data
+def load_data(file_path):
     #読み取り
-#    df = pd.read_excel(file_path)
+    df = pd.read_excel(file_path)
     # '肥料名称' カラムから NaN を取り除く
-#    df = df.dropna(subset=['肥料名称'])
-#    return df
+    df = df.dropna(subset=['肥料名称'])
+    return df
 
 #キャッシュクリア
 #if st.button('Clear Cache'):
@@ -37,28 +37,28 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 #    df_ekihi = load_data('銘柄データ_液肥.xlsx')
 #    df_kasei = load_data('銘柄データ_化成.xlsx')
 # キャッシュとセッションステートのクリア
-#if st.button('All Clear'):
+if st.button('All Clear'):
     # セッションステートをクリア
-#    for key in st.session_state.keys():
-#        del st.session_state[key]
-#    # キャッシュをクリア
-#    st.cache_data.clear()
-#    st.cache_resource.clear()
+    for key in st.session_state.keys():
+        del st.session_state[key]
+    # キャッシュをクリア
+    st.cache_data.clear()
+    st.cache_resource.clear()
 
 
-#df = load_data('銘柄データ_BB.xlsx')
-#df_ekihi = load_data('銘柄データ_液肥.xlsx')
-#df_kasei = load_data('銘柄データ_化成.xlsx')
+df = load_data('銘柄データ_BB.xlsx')
+df_ekihi = load_data('銘柄データ_液肥.xlsx')
+df_kasei = load_data('銘柄データ_化成.xlsx')
 
 #肥料名称のリストをつくる。
-#fertilizer_names = df['肥料名称'].tolist()
-##fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
-#fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
+fertilizer_names = df['肥料名称'].tolist()
+fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
+fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
 
 # 選択されたアイテムのリストを作成
-#selected_fertilizer = []
-#selected_fertilizer_ekihi = []
-#selected_fertilizer_kasei = []
+selected_fertilizer = []
+selected_fertilizer_ekihi = []
+selected_fertilizer_kasei = []
 
 
 st.markdown(
@@ -74,119 +74,34 @@ st.markdown(
 )
 
 # 3つのカラムを作成
-#col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns(3)
 
 # 1列目に球技のチェックボックスを作成
-#with col1:
-#    st.header("BB")
-#    for fertilizer_name in fertilizer_names:
-#        if st.checkbox(fertilizer_name, key=fertilizer_name):
-#            selected_fertilizer.append(fertilizer_name)
+with col1:
+    st.header("BB")
+    for fertilizer_name in fertilizer_names:
+        if st.checkbox(fertilizer_name, key=fertilizer_name):
+            selected_fertilizer.append(fertilizer_name)
 
 # 2列目に球技のチェックボックスを作成
-#with col2:
-#    st.header("化成")
-#    for fertilizer_name_kasei in fertilizer_names_kasei:
-#        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei):
-#            selected_fertilizer_kasei.append(fertilizer_name_kasei)
+with col2:
+    st.header("化成")
+    for fertilizer_name_kasei in fertilizer_names_kasei:
+        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei):
+            selected_fertilizer_kasei.append(fertilizer_name_kasei)
 
 # 3列目に魚のチェックボックスを作成
-#with col3:
-#    st.header("液肥")
-#    for fertilizer_name_ekihi in fertilizer_names_ekihi:
-#        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
-#            selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
-
-
-#============================================
-#with col1:
-#    st.header("BB")
-#    for i, fertilizer_name in enumerate(fertilizer_names):
-#        if st.checkbox(fertilizer_name, key=f"bb_{i}_{fertilizer_name}"):
-#            selected_fertilizer.append(fertilizer_name)
-
-#with col2:
-#    st.header("化成")
-#    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
-#        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}_{fertilizer_name_kasei}"):
-#            selected_fertilizer_kasei.append(fertilizer_name_kasei)
-
-#with col3:
-#    st.header("液肥")
-#    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
-#        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}_{fertilizer_name_ekihi}"):
-#            selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
+with col3:
+    st.header("液肥")
+    for fertilizer_name_ekihi in fertilizer_names_ekihi:
+        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
+            selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
 
 
 # 選択されたアイテムの数を主翼
-#selected_fertilizer_count = len(selected_fertilizer)
-#selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
-#selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
-
-st.title('🛠️パンフレット作成🛠️')
-
-# ファイルパスを指定してExcelファイルを読み込む
-@st.cache_data
-def load_data(file_path):
-    df = pd.read_excel(file_path)
-    df = df.dropna(subset=['肥料名称'])
-    return df
-
-# キャッシュとセッションステートのクリア
-if st.button('All Clear'):
-    for key in list(st.session_state.keys()):
-        del st.session_state[key]
-    st.cache_data.clear()
-    st.cache_resource.clear()
-    st.experimental_rerun()
-
-# データの読み込み
-df = load_data('銘柄データ_BB.xlsx')
-df_ekihi = load_data('銘柄データ_液肥.xlsx')
-df_kasei = load_data('銘柄データ_化成.xlsx')
-
-# 肥料名称のリストを作成
-fertilizer_names = df['肥料名称'].tolist()
-fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
-fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
-
-# チェックボックスの状態をセッションステートに保存
-if 'selected_fertilizer' not in st.session_state:
-    st.session_state.selected_fertilizer = [False] * len(fertilizer_names)
-if 'selected_fertilizer_kasei' not in st.session_state:
-    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
-if 'selected_fertilizer_ekihi' not in st.session_state:
-    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
-
-# チェックボックスの状態をリセットする関数
-def reset_checkboxes():
-    st.session_state.selected_fertilizer = [False] * len(fertilizer_names)
-    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
-    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
-    st.experimental_rerun()
-
-# リセットボタンを表示
-if st.button('チェックマークをリセット'):
-    reset_checkboxes()
-
-# 3つのカラムを作成
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.header("BB")
-    for i, fertilizer_name in enumerate(fertilizer_names):
-        st.session_state.selected_fertilizer[i] = st.checkbox(fertilizer_name, value=st.session_state.selected_fertilizer[i], key=f"bb_{i}_{fertilizer_name}")
-
-with col2:
-    st.header("化成")
-    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
-        st.session_state.selected_fertilizer_kasei[i] = st.checkbox(fertilizer_name_kasei, value=st.session_state.selected_fertilizer_kasei[i], key=f"kasei_{i}_{fertilizer_name_kasei}")
-
-with col3:
-    st.header("液肥")
-    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
-        st.session_state.selected_fertilizer_ekihi[i] = st.checkbox(fertilizer_name_ekihi, value=st.session_state.selected_fertilizer_ekihi[i], key=f"ekihi_{i}_{fertilizer_name_ekihi}")
-
+selected_fertilizer_count = len(selected_fertilizer)
+selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
+selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
 if st.button('セットアップする'):
 
