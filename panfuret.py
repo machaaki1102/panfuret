@@ -38,16 +38,13 @@ def load_data(file_path):
 #    df_kasei = load_data('銘柄データ_化成.xlsx')
 # キャッシュとセッションステートのクリア
 if st.button('All Clear'):
+    # セッションステートをクリア
+    for key in st.session_state.keys():
+        del st.session_state[key]
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
 
-    # セッションステートをクリア
-    for key in st.session_state.keys():
-        del st.session_state[key]
-
-    # アプリを再読み込み
-    st.experimental_rerun()
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
