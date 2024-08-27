@@ -67,25 +67,50 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 # 1列目に球技のチェックボックスを作成
-with col1:
-    st.header("BB")
-    for fertilizer_name in fertilizer_names:
-        if st.checkbox(fertilizer_name, key=fertilizer_name):
-            selected_fertilizer.append(fertilizer_name)
+#with col1:
+#    st.header("BB")
+#    for fertilizer_name in fertilizer_names:
+#        if st.checkbox(fertilizer_name, key=fertilizer_name):
+#            selected_fertilizer.append(fertilizer_name)
 
 # 2列目に球技のチェックボックスを作成
-with col2:
-    st.header("化成")
-    for fertilizer_name_kasei in fertilizer_names_kasei:
-        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei):
-            selected_fertilizer_kasei.append(fertilizer_name_kasei)
+#with col2:
+#    st.header("化成")
+#    for fertilizer_name_kasei in fertilizer_names_kasei:
+#        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei):
+#            selected_fertilizer_kasei.append(fertilizer_name_kasei)
 
 # 3列目に魚のチェックボックスを作成
+#with col3:
+#    st.header("液肥")
+#    for fertilizer_name_ekihi in fertilizer_names_ekihi:
+#        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
+#            selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
+
+
+#============================================
+with col1:
+    st.header("BB")
+    for i, fertilizer_name in enumerate(fertilizer_names):
+        if st.checkbox(fertilizer_name, key=f"bb_{i}_{fertilizer_name}"):
+            selected_fertilizer.append(fertilizer_name)
+
+with col2:
+    st.header("化成")
+    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
+        if st.checkbox(fertilizer_name_kasei, key=f"kasei_{i}_{fertilizer_name_kasei}"):
+            selected_fertilizer_kasei.append(fertilizer_name_kasei)
+
 with col3:
     st.header("液肥")
-    for fertilizer_name_ekihi in fertilizer_names_ekihi:
-        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
+    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
+        if st.checkbox(fertilizer_name_ekihi, key=f"ekihi_{i}_{fertilizer_name_ekihi}"):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
+
+
+
+
+
 
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
@@ -698,13 +723,3 @@ with col6:
         file_name='ekihi_tem_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
-if st.button('All Clear'):
-    # キャッシュをクリア
-    #st.cache_data.clear()
-    #st.cache_resource.clear()
-
-    # セッションステートをクリア
-    #st.session_state.clear()
-
-    # アプリを再読み込み
-    st.experimental_rerun()
