@@ -299,7 +299,7 @@ if st.button('セットアップする'):
         wb.save('bb_tem_finish.xlsx')
 
 
-    if selected_fertilizer_count_ekihi > 0:
+    if selected_fertilizer_count_kasei > 0:
         # ワークブックをロードする
         wb = openpyxl.load_workbook('kasei_tem.xlsx')
         # ワークシートを選択する（シート名を指定する）
@@ -492,7 +492,7 @@ if st.button('セットアップする'):
         wb.save('kasei_tem_finish.xlsx')
 
 
-    if selected_fertilizer_count_kasei > 0:
+    if selected_fertilizer_count_ekihi > 0:
         # ワークブックをロードする
         wb = openpyxl.load_workbook('ekihi_tem.xlsx')
         # ワークシートを選択する（シート名を指定する）
