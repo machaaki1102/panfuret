@@ -632,7 +632,7 @@ if st.button('セットアップする'):
                 original_img = PILImage.open(img_path)
 
                 # 画像のリサイズ
-                new_size = (210, 270)  # 新しいサイズを指定
+                new_size = (210, 300)  # 新しいサイズを指定
                 resized_img = original_img.resize(new_size)
             
                 # 一時的なファイルを作成
