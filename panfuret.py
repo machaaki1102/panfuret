@@ -118,13 +118,10 @@ with col3:
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
 
 
-
-
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
-
 
 if st.button('セットアップする'):
 
