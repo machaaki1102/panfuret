@@ -8,12 +8,24 @@ import tempfile
 from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
-# タイトルより上にテキストを追加
-st.markdown("# 上に表示するテキストや要素")
-st.markdown("---")  # タイトルとの間に水平線を挿入
+# タイトル上の余白を削除するCSSを適用
+st.markdown(
+    """
+    <style>
+    .block-container {
+        padding-top: 0rem;  /* 上部の余白を削除 */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# タイトルをページの最上部に配置
+st.title('🛠️パンフレット作成🛠️')
+
 
 # タイトルを追加
-st.title('🛠️パンフレット作成🛠️')
+#st.title('🛠️パンフレット作成🛠️')
 
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
