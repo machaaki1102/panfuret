@@ -79,7 +79,7 @@ with col1:
     #st.header("BB")
     # ヘッダーの文字サイズを小さくする
     st.markdown(
-        "<h3 style='font-size:30px;'>BB</h3>",  # 'font-size'でサイズを指定
+        "<h3 style='font-size:25px;'>BB</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
     )
     for i, fertilizer_name in enumerate(fertilizer_names):
@@ -94,7 +94,7 @@ with col1:
 with col2:
     #st.header("化成")
     st.markdown(
-        "<h3 style='font-size:30px;'>化成</h3>",  # 'font-size'でサイズを指定
+        "<h3 style='font-size:25px;'>化成</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
     )
     for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
@@ -109,7 +109,7 @@ with col2:
 with col3:
     #st.header("液肥")
     st.markdown(
-        "<h3 style='font-size:30px;'>液肥</h3>",  # 'font-size'でサイズを指定
+        "<h3 style='font-size:25px;'>液肥</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
     )
     for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
