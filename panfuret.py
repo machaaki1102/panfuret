@@ -25,7 +25,7 @@ if st.button('cash Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
-
+    st.rerun()
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
@@ -70,7 +70,7 @@ if st.button('チェックマークをリセット'):
     st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
     st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
-    st.experimental_rerun()
+#    st.rerun()
 
 # 1列目に球技のチェックボックスを作成
 with col1:
