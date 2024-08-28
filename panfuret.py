@@ -68,7 +68,7 @@ if 'selected_fertilizer_ekihi' not in st.session_state:
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
 
 # リセットボタンを表示
-if st.button('チェックマークをリセット＜最後のクリックは消えないので注意＞'):
+if st.button('チェックマークをリセット'):
     st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
     st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
