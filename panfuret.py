@@ -92,7 +92,7 @@ with col1:
 
 # 2列目に球技のチェックボックスを作成
 with col2:
-    #st.header("化成")
+    ##st.header("化成")
     st.markdown(
         "<h3 style='font-size:25px;'>化成</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
