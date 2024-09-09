@@ -839,12 +839,12 @@ with col6:
 
 
 #================
-with open('ekihi_tem_finish.xlsx', 'rb') as file:
-        excel_data_ekihi = file.read()
+with open('目次_finish.xlsx', 'rb') as file:
+        mokuji_ekihi = file.read()
 
 st.download_button(
         label="Download Excel File＜目次＞",  # ボタンのラベル
-        data=excel_data_ekihi,  # ダウンロードするデータ
+        data=mokuji_ekihi,  # ダウンロードするデータ
         file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
