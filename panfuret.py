@@ -139,7 +139,7 @@ if st.button('目次セットアップする'):
         count_kasei = selected_fertilizer_count_kasei + 1
 
 
-    all_count = count_moukuji + count_ekihi_mokuji + count_kasei_mokuji
+    all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
 
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
