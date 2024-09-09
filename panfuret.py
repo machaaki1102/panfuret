@@ -150,9 +150,10 @@ if st.button('目次セットアップする'):
     wb = openpyxl.load_workbook('目次.xlsx')
     # ワークシートを選択する（シート名を指定する）
     ws = wb['目次']
-    all_count = all_count + 1
+
     ## 必要数
-    count = (all_count // 8) + 1
+    all_count_pulas = all_count + 1
+    count = (all_count_pulas // 8) + 1
 
     st.write(count)
     for i in range(0, count):
@@ -200,9 +201,9 @@ if st.button('目次セットアップする'):
                     col_letter = openpyxl.utils.get_column_letter(idx)
                     ws.column_dimensions[col_letter].width = width
 
-            # いらないところを消す
-    #        number = m + 1  # mが0からカウントとなるため、+1とする
-    #        kesu_offset = (number // 2) * 13
+    # いらないところを消す
+    number = m + 1  # mが0からカウントとなるため、+1とする
+    kesu_offset = (number // 2) * 13
 
             # 奇数の時のみ実行する
     #        if number % 2 != 0:
