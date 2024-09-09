@@ -125,6 +125,113 @@ selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
 
+#目次作成=========== =
+if st.button('目次セットアップする'):
+
+    #必要分だけコピーする。
+    if selected_fertilizer_count >= 0:
+        count_mokuji = selected_fertilizer_count + 1
+
+    if selected_fertilizer_count_ekihi >= 0:
+        count_ekihi_mokuji = selected_fertilizer_count_ekihi + 1
+
+    if selected_fertilizer_count_kasei >= 0:
+        count_kasei = selected_fertilizer_count_kasei + 1
+
+
+    all_count = count_moukuji + count_ekihi_mokuji + count_kasei_mokuji
+
+    # ワークブックをロードする
+    wb = openpyxl.load_workbook('目次.xlsx')
+    # ワークシートを選択する（シート名を指定する）
+    ws = wb['目次']
+    all_count = all_count + 1
+    ## 必要数
+    count = (all_count // 8)
+
+    for i in range(0, count):
+        row_count = 1
+        col_count = 14
+        col_offset = i * 5
+
+        # コピー元の範囲（例: A1からE25）
+        source_range = [[ws.cell(row=r, column=c) for c in range(1, 5)] for r in range(1, 25)]
+
+        # コピー先の左上セル（例: F5）
+        dest_start_cell = ws.cell(row=row_count, column=col_count + col_offset)
+
+        def copy_cell(src_cell, dest_cell):
+            dest_cell.value = src_cell.value
+            if src_cell.has_style:
+                dest_cell.font = copy(src_cell.font)
+                dest_cell.border = copy(src_cell.border)
+                dest_cell.fill = copy(src_cell.fill)
+                dest_cell.number_format = copy(src_cell.number_format)
+                dest_cell.protection = copy(src_cell.protection)
+                dest_cell.alignment = copy(src_cell.alignment)
+
+        # コピー元範囲の行数と列数を取得する
+        row_count = len(source_range)
+        col_count = len(source_range[0])
+
+        # コピー元範囲をループしてコピー先にペーストする
+        for i in range(row_count):
+            for j in range(col_count):
+                src_cell = source_range[i][j]
+                dest_cell = ws.cell(row=dest_start_cell.row + i, column=dest_start_cell.column + j)
+                copy_cell(src_cell, dest_cell)
+
+                # 指定された列幅にコピー元とコピー先の列幅を設定する
+                specified_widths = [8.08, 8.08, 8.08, 8.08, 4.04, 8.08]
+
+                # コピー元の列幅を設定する
+                for idx, width in enumerate(specified_widths, start=source_range[0][0].column):
+                    col_letter = openpyxl.utils.get_column_letter(idx)
+                    ws.column_dimensions[col_letter].width = width
+
+                # コピー先の列幅を設定する
+                for idx, width in enumerate(specified_widths, start=dest_start_cell.column):
+                    col_letter = openpyxl.utils.get_column_letter(idx)
+                    ws.column_dimensions[col_letter].width = width
+
+            # いらないところを消す
+    #        number = m + 1  # mが0からカウントとなるため、+1とする
+    #        kesu_offset = (number // 2) * 13
+
+            # 奇数の時のみ実行する
+    #        if number % 2 != 0:
+                # A1:M44 の範囲のセルをループする
+    #            for row in ws.iter_rows(min_row=24, max_row=42, min_col=1 + kesu_offset, max_col=13 + kesu_offset):
+    #                for cell in row:
+                        # セルの文字を消す
+    #                    cell.value = None
+
+                        # セルの罫線を消す
+    #                    cell.border = Border()
+
+                        # セルの背景色を消す (デフォルトは白)
+    #                    cell.fill = PatternFill(fill_type=None)
+
+                        # セルのフォントスタイルをデフォルトにリセット
+    #                    cell.font = Font()
+
+        wb.save('目次_finish.xlsx')
+
+
+
+
+
+#===========
+
+
+
+
+
+
+
+
+
+
 if st.button('セットアップする'):
 
     if selected_fertilizer_count > 0:
@@ -727,5 +834,12 @@ with col6:
         label="Download Excel File＜液肥＞",  # ボタンのラベル
         data=excel_data_ekihi,  # ダウンロードするデータ
         file_name='ekihi_tem_finish.xlsx',  # ダウンロード時のファイル名
+        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+    )
+
+st.download_button(
+        label="Download Excel File＜目次＞",  # ボタンのラベル
+        data=excel_data_ekihi,  # ダウンロードするデータ
+        file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )

@@ -8,8 +8,12 @@ import tempfile
 from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
 
-# タイトルを追加
-st.title('🛠️パンフレット作成🛠️')
+# タイトルをページの最上部に配置
+#st.title('🛠️パンフレット作成🛠️')
+st.markdown(
+        "<h3 style='font-size:30px;'>🛠️パンフレット作成🛠️</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
 
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
@@ -25,12 +29,13 @@ if st.button('cash Clear'):
     # キャッシュをクリア
     st.cache_data.clear()
     st.cache_resource.clear()
+    st.rerun()  # アプリをリロード
 
 df = load_data('銘柄データ_BB.xlsx')
 df_ekihi = load_data('銘柄データ_液肥.xlsx')
 df_kasei = load_data('銘柄データ_化成.xlsx')
 
-#肥料名称のリストをつくる。
+# 肥料名称のリストを作る
 fertilizer_names = df['肥料名称'].tolist()
 fertilizer_names_ekihi = df_ekihi['肥料名称'].tolist()
 fertilizer_names_kasei = df_kasei['肥料名称'].tolist()
@@ -40,13 +45,11 @@ selected_fertilizer = []
 selected_fertilizer_ekihi = []
 selected_fertilizer_kasei = []
 
-
 st.markdown(
     """
     <style>
     .main .block-container {
         max-width: 1000px;
-#       padding: 1rem 1rem;
     }
     </style>
     """,
@@ -56,32 +59,71 @@ st.markdown(
 # 3つのカラムを作成
 col1, col2, col3 = st.columns(3)
 
+# チェックボックスの状態をセッションステートに保存
+if 'selected_fertilizer_bb' not in st.session_state:
+    st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
+if 'selected_fertilizer_kasei' not in st.session_state:
+    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
+if 'selected_fertilizer_ekihi' not in st.session_state:
+    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
+
+# リセットボタンを表示
+if st.button('チェックマークをリセット<注意:最後のチェックしたのは消えない>'):
+    st.session_state.selected_fertilizer_bb = [False] * len(fertilizer_names)
+    st.session_state.selected_fertilizer_kasei = [False] * len(fertilizer_names_kasei)
+    st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
+    st.rerun()  # リセット後に再描画
+
 # 1列目に球技のチェックボックスを作成
 with col1:
-    st.header("BB")
-    for fertilizer_name in fertilizer_names:
-        if st.checkbox(fertilizer_name, key=fertilizer_name):
+    #st.header("BB")
+    # ヘッダーの文字サイズを小さくする
+    st.markdown(
+        "<h3 style='font-size:25px;'>BB</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
+    for i, fertilizer_name in enumerate(fertilizer_names):
+        checkbox_value = st.session_state.selected_fertilizer_bb[i]
+        if st.checkbox(fertilizer_name, key=fertilizer_name, value=checkbox_value):
             selected_fertilizer.append(fertilizer_name)
+            st.session_state.selected_fertilizer_bb[i] = True
+        else:
+            st.session_state.selected_fertilizer_bb[i] = False
 
 # 2列目に球技のチェックボックスを作成
 with col2:
-    st.header("化成")
-    for fertilizer_name_kasei in fertilizer_names_kasei:
-        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei):
+    ##st.header("化成")
+    st.markdown(
+        "<h3 style='font-size:25px;'>化成</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
+    for i, fertilizer_name_kasei in enumerate(fertilizer_names_kasei):
+        checkbox_value = st.session_state.selected_fertilizer_kasei[i]
+        if st.checkbox(fertilizer_name_kasei, key=fertilizer_name_kasei, value=checkbox_value):
             selected_fertilizer_kasei.append(fertilizer_name_kasei)
+            st.session_state.selected_fertilizer_kasei[i] = True
+        else:
+            st.session_state.selected_fertilizer_kasei[i] = False
 
 # 3列目に魚のチェックボックスを作成
 with col3:
-    st.header("液肥")
-    for fertilizer_name_ekihi in fertilizer_names_ekihi:
-        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi):
+    #st.header("液肥")
+    st.markdown(
+        "<h3 style='font-size:25px;'>液肥</h3>",  # 'font-size'でサイズを指定
+        unsafe_allow_html=True
+    )
+    for i, fertilizer_name_ekihi in enumerate(fertilizer_names_ekihi):
+        checkbox_value = st.session_state.selected_fertilizer_ekihi[i]
+        if st.checkbox(fertilizer_name_ekihi, key=fertilizer_name_ekihi, value=checkbox_value):
             selected_fertilizer_ekihi.append(fertilizer_name_ekihi)
-
-
+            st.session_state.selected_fertilizer_ekihi[i] = True
+        else:
+            st.session_state.selected_fertilizer_ekihi[i] = False
 # 選択されたアイテムの数を主翼
 selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
+
 
 if st.button('セットアップする'):
 
@@ -91,7 +133,7 @@ if st.button('セットアップする'):
         # ワークシートを選択する（シート名を指定する）
         ws = wb['BB_テンプレ']
 
-        # 必要数
+        ## 必要数
         count_number = selected_fertilizer_count  ###ここがチェックされた数字となる。
         #テンプレートを作るところ。
         m = count_number - 1  # ここでチェックをつけられた分だけコピーすることになる。0からカウント
@@ -618,7 +660,7 @@ if st.button('セットアップする'):
                 original_img = PILImage.open(img_path)
 
                 # 画像のリサイズ
-                new_size = (190, 330)  # 新しいサイズを指定
+                new_size = (170, 330)  # 新しいサイズを指定
                 resized_img = original_img.resize(new_size)
             
                 # 一時的なファイルを作成
