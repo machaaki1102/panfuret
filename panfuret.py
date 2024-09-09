@@ -837,6 +837,11 @@ with col6:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
+
+#================
+with open('ekihi_tem_finish.xlsx', 'rb') as file:
+        excel_data_ekihi = file.read()
+
 st.download_button(
         label="Download Excel File＜目次＞",  # ボタンのラベル
         data=excel_data_ekihi,  # ダウンロードするデータ
