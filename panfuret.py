@@ -140,7 +140,7 @@ if st.button('目次セットアップする'):
 
     st.write(count_mokuji)
     st.write(count_ekihi_mokuji)
-    st.write(count_kasai_mokuji)
+    st.write(count_kasei_mokuji)
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
     
