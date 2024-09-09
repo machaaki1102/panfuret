@@ -152,13 +152,13 @@ if st.button('目次セットアップする'):
     for i in range(0, count):
         row_count = 1
         col_count = 14
-        col_offset = i * 5
+        col_offset = i * 6
         st.write(col_offset)
         # コピー元の範囲（例: A1からE25）
         source_range = [[ws.cell(row=r, column=c) for c in range(1, 5)] for r in range(1, 25)]
 
-        # コピー先の左上セル（例: F5）
-        dest_start_cell = ws.cell(row=row_count, column=col_count + col_offset)
+        # コピー先の左上セル（例: F1）
+        dest_start_cell = ws.cell(row=1, column=col_offset)
 
         def copy_cell(src_cell, dest_cell):
             dest_cell.value = src_cell.value
