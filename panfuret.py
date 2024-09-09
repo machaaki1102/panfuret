@@ -222,7 +222,7 @@ if st.button('目次セットアップする'):
                         # セルのフォントスタイルをデフォルトにリセット
     #                    cell.font = Font()
 
-        wb.save('目次_finish.xlsx')
+    wb.save('目次_finish.xlsx')
 
 
 
