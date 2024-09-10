@@ -238,12 +238,17 @@ if st.button('目次セットアップする'):
 
     all_n = 0
     bb_n = 0
-    daimei_row_n = (all_n % 8) * 3 + 2
+    #daimei_row_n = (all_n % 8) * 3 + 2
     daimei_col_n = (all_n // 8) * 5 + 1
 
-
-    for i, fertilizer_name in enumerate(selected_fertilizer):
-        fertilizer_value = fertilizer_name
+    for fertilizer in selected_fertilizer:
+        selected_row = df[df['肥料名称'] == fertilizer]
+            
+#    for i, fertilizer_name in enumerate(selected_fertilizer):
+#        fertilizer_value = fertilizer_name
+        name = ws.cell(row=4 + bb_n , column=1 + daimei_col_n)
+        name.value = selected_row['肥料名称'].values[0]
+      
         all_n += 1
         bb_n += 1
 # ワークブックとシートを作成
