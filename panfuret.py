@@ -268,7 +268,7 @@ if st.button('目次セットアップする'):
 #            row = 4
 #        else:
 #            row = 0
-        name = ws.cell(row=dai_row_n , column=1 + daimei_col_n)
+        name = ws.cell(row=daimei_row_n , column=1 + daimei_col_n)
         name.value = selected_row['肥料名称'].values[0]
       
         all_n += 1
