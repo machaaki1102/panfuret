@@ -208,9 +208,9 @@ if st.button('目次セットアップする'):
     shita_offset = (all_count % 8) * 3
     migi_offset = (all_count // 8) * 5
     
-    st.write(all_count)
-    st.write(shita_offset)
-    st.write(migi_offset)
+    #st.write(all_count)
+    #st.write(shita_offset)
+    #st.write(migi_offset)
     # 奇数の時のみ実行する
     if shita_offset != 0:
         # A1:M44 の範囲のセルをループする
@@ -231,12 +231,26 @@ if st.button('目次セットアップする'):
     #wb.save('目次_finish.xlsx')
 
 #===========
+    #BB名を貼り付け
+    # 行2の1列目(A)から5列目(E)ま
+    daimei_row_n = 2
+    daimei_col_n = 1
 
+    # RGB(91, 155, 213)を16進数で指定
+    fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
+
+    for col in range(0, 5):  # 1列目(A)から5列目(E)
+        ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
+    
+    name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+
+    name.value = 'BB肥料'
+    # 文字色を白に設定
+    white_font = Font(color="FFFFFF", size=16, bold=True)
+    name.font = white_font
 #データ入力
 
     all_n = 0
-    
-#    bb_n = 0
     kasei_n = 0
     ekihi_n = 0
     
@@ -255,30 +269,46 @@ if st.button('目次セットアップする'):
         daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
         daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
 
-    st.write(all_n)
-
+   
     #BB名を貼り付け
     # 行2の1列目(A)から5列目(E)ま
-    daimei_row_n = 2
-    daimei_col_n = 1
+    #daimei_row_n = 2
+    #daimei_col_n = 1
 
     # RGB(91, 155, 213)を16進数で指定
-    fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
+    #fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
-    for col in range(0, 5):  # 1列目(A)から5列目(E)
-        ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
+    #for col in range(0, 5):  # 1列目(A)から5列目(E)
+    #    ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
     
-    name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+    #name = ws.cell(row=daimei_row_n , column=daimei_col_n)
 
-    name.value = 'BB肥料'
+    #name.value = 'BB肥料'
     # 文字色を白に設定
-    white_font = Font(color="FFFFFF", size=16, bold=True)
-    name.font = white_font
+    #white_font = Font(color="FFFFFF", size=16, bold=True)
+    #name.font = white_font
     
     #化成の部分を追加する。
     # BBがある場合、selected_fertilizer の中身がある場合に実行されるコード
-    #if selected_fertilizer:
-    #    koumoku += 1
+    st.write(f'all_nは{all_n}')
+    if selected_fertilizer:
+        koumoku += 1
+    
+    # 場合分け
+    if all_n // 3 == 1:
+        daimei_row_n = ((all_n + 3 + (koumoku * 3)) % 24) + 1
+        st.write(f'いまの行数は{daimei_row_n}')
+        st.write(f'いまの列数は{daimei_col_n}')
+    elif all_n // 3 == 2:
+        daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+        st.write(f'いまの行数は{daimei_row_n}')
+        st.write(f'いまの列数は{daimei_col_n}')
+    elif all_n // 3 == 0:
+        daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
+        st.write(f'いまの行数は{daimei_row_n}')
+        st.write(f'いまの列数は{daimei_col_n}')
+    else:
+        st.write("all_n // 3 は 1でも2でも0でもありません")
 
 
     #for fertilizer in selected_fertilizer_kasei:
