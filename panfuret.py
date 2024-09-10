@@ -256,7 +256,7 @@ if st.button('目次セットアップする'):
     
     koumoku = 1
     #daimei_row_n = (all_n % 8) * 3 + 2
-    daimei_row_n = ((all_n - 1 +(koumoku * 3)) % 24) + 1
+    daimei_row_n = ((all_n  + (koumoku * 3)) % 24) + 1
     daimei_col_n = ((all_n - 1 + (koumoku * 3))// 24) * 5
 
     for fertilizer in selected_fertilizer:
