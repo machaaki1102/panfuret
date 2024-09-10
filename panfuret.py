@@ -169,7 +169,7 @@ if st.button('目次セットアップする'):
     #all_count_pulas = all_count + 1
     #count = (all_count_pulas // 8) + 1
     count = (all_count // 8)
-
+    st.write(count)
     #st.write(count)
     for i in range(0, count):
         row_count = 1
