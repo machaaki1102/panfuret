@@ -274,11 +274,28 @@ if st.button('目次セットアップする'):
     # 文字色を白に設定
     white_font = Font(color="FFFFFF", size=16, bold=True)
     name.font = white_font
-            
+    
+    #化成の部分を追加する。
+    # BBがある場合、selected_fertilizer の中身がある場合に実行されるコード
+    #if selected_fertilizer:
+    #    koumoku += 1
 
+
+    #for fertilizer in selected_fertilizer_kasei:
+    #    selected_row = df[df['肥料名称'] == fertilizer]
+            
+    #    name = ws.cell(row=daimei_row_n , column=1 + daimei_col_n)
+    #    name.value = selected_row['肥料名称'].values[0]
+      
+    #    all_n += 1
+    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
+    #    daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
+
+
+#=================================================
 # 保存する場合
     wb.save("目次_finish.xlsx")
-
+#==========================================
 
 
 
