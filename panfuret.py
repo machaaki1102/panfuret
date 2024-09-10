@@ -271,7 +271,7 @@ if st.button('目次セットアップする'):
     #name.value = selected_row['肥料名称'].values[0]
     name.value = '化成肥料'
     # 文字色を白に設定
-    white_font = Font(color="FFFFFF")
+    white_font = Font(color="FFFFFF", size=16)
     name.font = white_font
             
 
