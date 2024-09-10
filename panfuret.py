@@ -132,8 +132,7 @@ if st.button('目次セットアップする'):
     count_ekihi_mokuji = selected_fertilizer_count_ekihi
     count_kasei_mokuji = selected_fertilizer_count_kasei 
 
-    
-
+    st.write(count_mokuji)
     #必要分だけコピーする。
     if selected_fertilizer_count > 0:
         count_mokuji = ((count_mokuji - 1) // 3) 
