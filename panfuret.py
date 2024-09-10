@@ -253,7 +253,7 @@ if st.button('目次セットアップする'):
     for col in range(1, 6):  # 1列目(A)から5列目(E)
         ws.cell(row=row, column=col).fill = fill_color
 
-    name = ws.cell(row=row + row_offset, column=col + col_offset)
+    name = ws.cell(row=row , column=col)
     #name.value = selected_row['肥料名称'].values[0]
     name.value = '化成肥料'
             
