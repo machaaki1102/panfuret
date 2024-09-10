@@ -272,7 +272,7 @@ if st.button('目次セットアップする'):
         name.value = selected_row['肥料名称'].values[0]
       
         all_n += 1
-        bb_n += 1
+        #bb_n += 1
 # ワークブックとシートを作成
 
     # RGB(91, 155, 213)を16進数で指定
