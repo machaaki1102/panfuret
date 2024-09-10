@@ -238,24 +238,26 @@ if st.button('目次セットアップする'):
 
     all_n = 0
     bb_n = 0
-    row_n = all_n + 2
-    col_n = ((all_n + 1) // 8)
+    daimei_row_n = (all_n % 8) * 3 + 2
+    daimei_col_n = (all_n // 8) * 5 + 1
 
     for i, fertilizer_name in enumerate(fertilizer_names):
         fertilizer_value = fertilizer_name
-
+        all_n += 1
+        bb_n += 1
 # ワークブックとシートを作成
 
     # RGB(91, 155, 213)を16進数で指定
     fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
     # 行2の1列目(A)から5列目(E)まで色を適用
+    daimei_row_n = (all_n % 8) * 3 + 2
+    daimei_col_n = (all_n // 8) * 5 + 1
 
-    for col in range(1, 6):  # 1列目(A)から5列目(E)
-        ws.cell(row=row_n, column=col).fill = fill_color
+    for col in range(0, 6):  # 1列目(A)から5列目(E)
+        ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
     
-
-    name = ws.cell(row=row , column=col_n)
+    name = ws.cell(row=daimei_row_n , column=daimei_col_n)
     #name.value = selected_row['肥料名称'].values[0]
     name.value = '化成肥料'
     # 文字色を白に設定
