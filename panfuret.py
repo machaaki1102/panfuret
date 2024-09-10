@@ -249,8 +249,14 @@ if st.button('目次セットアップする'):
 
     # 行2の1列目(A)から5列目(E)まで色を適用
     row = 2
+    col = 1
     for col in range(1, 6):  # 1列目(A)から5列目(E)
         ws.cell(row=row, column=col).fill = fill_color
+
+    name = ws.cell(row=row + row_offset, column=col + col_offset)
+    #name.value = selected_row['肥料名称'].values[0]
+    name.value = '化成肥料'
+            
 
 # 保存する場合
     wb.save("目次_finish.xlsx")
