@@ -240,11 +240,15 @@ if st.button('目次セットアップする'):
     bb_n = 0
     daimei_row_n = (all_n % 8) * 3 + 2
     daimei_col_n = (all_n // 8) * 5 + 1
-
+    st.write(all_n)
+    st.write(bb_n)
+    
     for i, fertilizer_name in enumerate(fertilizer_names):
         fertilizer_value = fertilizer_name
         all_n += 1
         bb_n += 1
+        st.write(all_n)
+    st.write(bb_n)
 # ワークブックとシートを作成
 
     # RGB(91, 155, 213)を16進数で指定
