@@ -142,13 +142,13 @@ if st.button('目次セットアップする'):
     if selected_fertilizer_count_kasei > 0:
         count_kasei_mokuji = selected_fertilizer_count_kasei + 1
 
-    st.write(count_mokuji)
-    st.write(count_ekihi_mokuji)
-    st.write(count_kasei_mokuji)
+    #st.write(count_mokuji)
+    #st.write(count_ekihi_mokuji)
+    #st.write(count_kasei_mokuji)
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
     
-    st.write(all_count)
+    #st.write(all_count)
 
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
@@ -159,7 +159,7 @@ if st.button('目次セットアップする'):
     all_count_pulas = all_count + 1
     count = (all_count_pulas // 8) + 1
 
-    st.write(count)
+    #st.write(count)
     for i in range(0, count):
         row_count = 1
         col_count = 1
@@ -230,13 +230,31 @@ if st.button('目次セットアップする'):
             # セルのフォントスタイルをデフォルトにリセット                   
                 cell.font = Font()
 
-    wb.save('目次_finish.xlsx')
-
-
-
-
+    #wb.save('目次_finish.xlsx')
 
 #===========
+
+#データ入力
+
+    all_n = 0
+    bb_n = 0
+
+    for i, fertilizer_name in enumerate(fertilizer_names):
+        fertilizer_value = fertilizer_name[i]
+
+# ワークブックとシートを作成
+
+    # RGB(91, 155, 213)を16進数で指定
+    fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
+
+    # 行2の1列目(A)から5列目(E)まで色を適用
+    row = 2
+    for col in range(1, 6):  # 1列目(A)から5列目(E)
+        ws.cell(row=row, column=col).fill = fill_color
+
+# 保存する場合
+    wb.save("目次_finish.xlsx")
+
 
 
 
