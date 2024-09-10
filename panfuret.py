@@ -248,12 +248,6 @@ if st.button('目次セットアップする'):
     for fertilizer in selected_fertilizer:
         selected_row = df[df['肥料名称'] == fertilizer]
             
-#    for i, fertilizer_name in enumerate(selected_fertilizer):
-#        fertilizer_value = fertilizer_name
-#        if all_n < 22:
-#            row = 4
-#        else:
-#            row = 0
         name = ws.cell(row=daimei_row_n , column=1 + daimei_col_n)
         name.value = selected_row['肥料名称'].values[0]
       
@@ -261,9 +255,7 @@ if st.button('目次セットアップする'):
         daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
         daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
 
-    st.write(all_n)    #bb_n += 1
-# ワークブックとシートを作成
-
+    #BB名を貼り付け
     # RGB(91, 155, 213)を16進数で指定
     fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
@@ -285,7 +277,7 @@ if st.button('目次セットアップする'):
     
     name = ws.cell(row=daimei_row_n , column=daimei_col_n)
     #name.value = selected_row['肥料名称'].values[0]
-    name.value = '化成肥料'
+    name.value = 'BB肥料'
     # 文字色を白に設定
     white_font = Font(color="FFFFFF", size=16, bold=True)
     name.font = white_font
