@@ -157,7 +157,7 @@ if st.button('目次セットアップする'):
     st.write(all_count)
     count = (all_count // 8)
     count += 1
-
+    st.write(count)
     for i in range(0, count):
         row_count = 1
         col_count = 1
