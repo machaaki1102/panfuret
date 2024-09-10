@@ -166,8 +166,9 @@ if st.button('目次セットアップする'):
     ws = wb['目次']
 
     ## 必要数
-    all_count_pulas = all_count + 1
-    count = (all_count_pulas // 8) + 1
+    #all_count_pulas = all_count + 1
+    #count = (all_count_pulas // 8) + 1
+    count = (all_count // 8) + 1
 
     #st.write(count)
     for i in range(0, count):
