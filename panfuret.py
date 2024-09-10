@@ -233,39 +233,106 @@ if st.button('目次セットアップする'):
 #===========
     #BB名を貼り付け
     # 行2の1列目(A)から5列目(E)ま
-    daimei_row_n = 2
-    daimei_col_n = 1
-
-    # RGB(91, 155, 213)を16進数で指定
-    fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
-
-    for col in range(0, 5):  # 1列目(A)から5列目(E)
-        ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
     
-    name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+    def name_insert(nam):
+        daimei_row_n = 2
+        daimei_col_n = 1
 
-    name.value = 'BB肥料'
-    # 文字色を白に設定
-    white_font = Font(color="FFFFFF", size=16, bold=True)
-    name.font = white_font
+        # RGB(91, 155, 213)を16進数で指定
+        fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
+
+        for col in range(0, 5):  # 1列目(A)から5列目(E)
+            ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
+    
+        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+
+        name.value = nam
+        # 文字色を白に設定
+        white_font = Font(color="FFFFFF", size=16, bold=True)
+        name.font = white_font
 #データ入力
 
-    all_n = 0
-    koumoku = 1
+#    all_n = 0
+#    koumoku = 1
     #daimei_row_n = (all_n % 8) * 3 + 2
     #daimei_row_n = ((all_n  + (koumoku * 3)) % 24) + 1
     #daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
     #st.write(daimei_col_n)
+#    for fertilizer in selected_fertilizer:
+#        selected_row = df[df['肥料名称'] == fertilizer]
+        
+#        daimei_row_n = ((all_n  + (koumoku * 3)) % 24) + 1
+#        daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
+            
+#        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+#        name.value = selected_row['肥料名称'].values[0]
+      
+#        all_n += 1
+
+#    st.write(f'all_nは{all_n}')
+#    st.write(f'daimei_row_nを{daimei_row_n}')
+#    st.write(f'daimei_col_nを{daimei_col_n}')
+
+#    if selected_fertilizer:
+#        koumoku += 1
+    
+    # 場合分け
+    #selected_fertilizer_kasei
+#    if all_n % 3 == 1:
+#        for fertilizer in selected_fertilizer_kasei:
+#            selected_row = df[df['肥料名称'] == fertilizer]
+
+#            daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+#            daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
+            
+#            name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+#            name.value = selected_row['肥料名称'].values[0]
+
+#            all_n += 1 
+        #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+ #           st.write(f'いまの行数は{daimei_row_n}')
+#            st.write(f'いまの列数は{daimei_col_n}')
+
+#    elif all_n % 3 == 2:
+#        daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
+#        st.write(f'いまの行数は{daimei_row_n}')
+#        st.write(f'いまの列数は{daimei_col_n}')
+#    elif all_n % 3 == 0:
+#        daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
+#        st.write(f'いまの行数は{daimei_row_n}')
+#        st.write(f'いまの列数は{daimei_col_n}')
+#    else:
+#        st.write("all_n // 3 は 1でも2でも0でもありません")
+
+
+    #for fertilizer in selected_fertilizer_kasei:
+    #    selected_row = df[df['肥料名称'] == fertilizer]
+            
+    #    name = ws.cell(row=daimei_row_n , column=1 + daimei_col_n)
+    #    name.value = selected_row['肥料名称'].values[0]
+      
+    #    all_n += 1
+    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
+    #    daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
+
+
+    #第２弾データ入力
+    
+    in_count = 0
+    start_row = 1
+    start_col = 1 
+        
     for fertilizer in selected_fertilizer:
         selected_row = df[df['肥料名称'] == fertilizer]
-        
-        daimei_row_n = ((all_n  + (koumoku * 3)) % 24) + 1
-        daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
-            
-        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
-        name.value = selected_row['肥料名称'].values[0]
+        st.write(selected_row)
+        row_offset = (in_count % 8) *3
+        col_offset = (in_count // 8) *5     
+         
+        for i in range(0,3):    
+            name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+            name.value = selected_row['肥料名称'].values[0]
       
-        all_n += 1
+        in_count += 1
 
     st.write(f'all_nは{all_n}')
     st.write(f'daimei_row_nを{daimei_row_n}')
@@ -301,18 +368,6 @@ if st.button('目次セットアップする'):
         st.write(f'いまの列数は{daimei_col_n}')
     else:
         st.write("all_n // 3 は 1でも2でも0でもありません")
-
-
-    #for fertilizer in selected_fertilizer_kasei:
-    #    selected_row = df[df['肥料名称'] == fertilizer]
-            
-    #    name = ws.cell(row=daimei_row_n , column=1 + daimei_col_n)
-    #    name.value = selected_row['肥料名称'].values[0]
-      
-    #    all_n += 1
-    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
-    #    daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
-
 
 #=================================================
 # 保存する場合
