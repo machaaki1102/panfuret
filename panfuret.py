@@ -254,29 +254,22 @@ if st.button('目次セットアップする'):
         all_n += 1
         daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
         daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
+　　
+    st.write(all_n)　　
 
     #BB名を貼り付け
-    # RGB(91, 155, 213)を16進数で指定
-    fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
-
-    # 行2の1列目(A)から5列目(E)まで色を適用
-    #st.write(all_n)
-    #st.write(bb_n)
-
-    #ココが移動を伴う 
-    #daimei_row_n = (all_n % 8) * 3 + 2
-    #daimei_col_n = (all_n // 8) * 5 + 1
-    
+    # 行2の1列目(A)から5列目(E)ま
     daimei_row_n = 2
     daimei_col_n = 1
-    #st.write(daimei_row_n)
-    #st.write(daimei_col_n)
+
+    # RGB(91, 155, 213)を16進数で指定
+    fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
     for col in range(0, 5):  # 1列目(A)から5列目(E)
         ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
     
     name = ws.cell(row=daimei_row_n , column=daimei_col_n)
-    #name.value = selected_row['肥料名称'].values[0]
+
     name.value = 'BB肥料'
     # 文字色を白に設定
     white_font = Font(color="FFFFFF", size=16, bold=True)
