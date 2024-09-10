@@ -240,7 +240,7 @@ if st.button('目次セットアップする'):
     bb_n = 0
 
     for i, fertilizer_name in enumerate(fertilizer_names):
-        fertilizer_value = fertilizer_name[i]
+        fertilizer_value = fertilizer_name
 
 # ワークブックとシートを作成
 
