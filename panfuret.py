@@ -291,6 +291,9 @@ if st.button('目次セットアップする'):
     #化成の部分を追加する。
     # BBがある場合、selected_fertilizer の中身がある場合に実行されるコード
     st.write(f'all_nは{all_n}')
+    st.write(f'daimei_row_nを{daimei_row_n}')
+    st.write(f'daimei_col_nを{daimei_col_n}')
+
     if selected_fertilizer:
         koumoku += 1
     
