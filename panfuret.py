@@ -154,6 +154,7 @@ if st.button('目次セットアップする'):
     # ワークシートを選択する（シート名を指定する）
     ws = wb['目次']
     ## 必要数
+    st.write(all_count)
     count = (all_count // 8)
     count += 1
 
