@@ -132,11 +132,11 @@ if st.button('目次セットアップする'):
     count_ekihi_mokuji = selected_fertilizer_count_ekihi
     count_kasei_mokuji = selected_fertilizer_count_kasei 
 
-    st.write(count_mokuji)
+    #st.write(count_mokuji)
     #必要分だけコピーする。
     if selected_fertilizer_count > 0:
         count_mokuji = ((count_mokuji - 1) // 3) 
-        st.write(count_mokuji)
+    #    st.write(count_mokuji)
         count_mokuji = count_mokuji + 2
 
     if selected_fertilizer_count_ekihi > 0:
@@ -148,7 +148,7 @@ if st.button('目次セットアップする'):
         count_kasei_mokuji = count_kasei_mokuji + 2
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
-    st.write(all_count)
+    #st.write(all_count)
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
     # ワークシートを選択する（シート名を指定する）
