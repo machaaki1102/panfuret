@@ -249,16 +249,26 @@ if st.button('目次セットアップする'):
 #データ入力
 
     all_n = 0
-    bb_n = 0
+    
+#    bb_n = 0
+    kasei_n = 0
+    ekihi_n = 0
+    
+    koumoku = 1
     #daimei_row_n = (all_n % 8) * 3 + 2
-    daimei_col_n = (all_n // 8) * 5
+    daimei_row_n = ((all_n - 1 +(koumoku * 3)) % 24) + 1
+    daimei_col_n = ((all_n - 1 + (koumoku * 3))// 24) * 5
 
     for fertilizer in selected_fertilizer:
         selected_row = df[df['肥料名称'] == fertilizer]
             
 #    for i, fertilizer_name in enumerate(selected_fertilizer):
 #        fertilizer_value = fertilizer_name
-        name = ws.cell(row=4 + bb_n , column=1 + daimei_col_n)
+#        if all_n < 22:
+#            row = 4
+#        else:
+#            row = 0
+        name = ws.cell(row=dai_row_n , column=1 + daimei_col_n)
         name.value = selected_row['肥料名称'].values[0]
       
         all_n += 1
