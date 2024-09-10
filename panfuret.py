@@ -128,14 +128,18 @@ selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 #目次作成=========== =
 if st.button('目次セットアップする'):
 
+    count_mokuji = selected_fertilizer_count
+    coount_ekihi_mokuji = selected_fertilizer_count_ekihi
+    count_kasei_mokuji = selected_fertilizer_count_kasei 
+
     #必要分だけコピーする。
-    if selected_fertilizer_count >= 0:
+    if selected_fertilizer_count > 0:
         count_mokuji = selected_fertilizer_count + 1
 
-    if selected_fertilizer_count_ekihi >= 0:
+    if selected_fertilizer_count_ekihi > 0:
         count_ekihi_mokuji = selected_fertilizer_count_ekihi + 1
 
-    if selected_fertilizer_count_kasei >= 0:
+    if selected_fertilizer_count_kasei > 0:
         count_kasei_mokuji = selected_fertilizer_count_kasei + 1
 
     st.write(count_mokuji)
@@ -208,7 +212,7 @@ if st.button('目次セットアップする'):
     
     st.write(shita_offset)
     st.write(migi_offset)
-    
+
     # 奇数の時のみ実行する
     if shita_offset != 0:
         # A1:M44 の範囲のセルをループする
