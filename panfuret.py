@@ -140,8 +140,8 @@ if st.button('目次セットアップする'):
         count_mokuji = count_mokuji + 2
 
     if selected_fertilizer_count_ekihi > 0:
-        count_kasei_ekihi = ((count_kesei_ekihi - 1) // 3) 
-        count_kasei_ekihi = count_kasei_ekihi + 2
+        count_ekihi_mokuji = ((count_ekihi_mokuji - 1) // 3) 
+        count_ekihi_mokuji = count_ekihi_mokuji + 2
     
     if selected_fertilizer_count_kasei > 0:
         count_kasei_mokuji = ((count_kasei_mokuji - 1) // 3) 
