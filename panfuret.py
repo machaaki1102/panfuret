@@ -146,32 +146,17 @@ if st.button('目次セットアップする'):
     if selected_fertilizer_count_kasei > 0:
         count_kasei_mokuji = ((count_kasei_mokuji - 1) // 3) 
         count_kasei_mokuji = count_kasei_mokuji + 2
-    #if selected_fertilizer_count_ekihi > 0:
-    #    count_ekihi_mokuji = selected_fertilizer_count_ekihi + 1
-
-    #if selected_fertilizer_count_kasei > 0:
-    #    count_kasei_mokuji = selected_fertilizer_count_kasei + 1
-
-    #st.write(count_mokuji)
-    #st.write(count_ekihi_mokuji)
-    #st.write(count_kasei_mokuji)
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
     
-    #st.write(all_count)
-
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
     # ワークシートを選択する（シート名を指定する）
     ws = wb['目次']
-
     ## 必要数
-    #all_count_pulas = all_count + 1
-    #count = (all_count_pulas // 8) + 1
     count = (all_count // 8)
     count += 1
-    #st.write(count)
-    #st.write(count)
+
     for i in range(0, count):
         row_count = 1
         col_count = 1
@@ -218,13 +203,11 @@ if st.button('目次セットアップする'):
                     ws.column_dimensions[col_letter].width = width
 
     # いらないところを消す
-    #number = m + 1  # mが0からカウントとなるため、+1とする
     shita_offset = (all_count % 8) * 3
     migi_offset = (all_count // 8) * 5
     
-    #st.write(shita_offset)
-    #st.write(migi_offset)
-
+    st.write(shita_offset)
+    st.write(migi_offset)
     # 奇数の時のみ実行する
     if shita_offset != 0:
         # A1:M44 の範囲のセルをループする
