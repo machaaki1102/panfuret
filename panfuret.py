@@ -251,9 +251,6 @@ if st.button('目次セットアップする'):
 #データ入力
 
     all_n = 0
-    kasei_n = 0
-    ekihi_n = 0
-    
     koumoku = 1
     #daimei_row_n = (all_n % 8) * 3 + 2
     daimei_row_n = ((all_n  + (koumoku * 3)) % 24) + 1
