@@ -164,11 +164,11 @@ if st.button('目次セットアップする'):
         row_count = 1
         col_count = 1
         col_offset = i * 5
-        st.write(col_offset)
+        ##st.write(col_offset)
         # コピー元の範囲（例: A1からE25）
         source_range = [[ws.cell(row=r, column=c) for c in range(1, 5)] for r in range(1, 25)]
 
-        # コピー先の左上セル（例: F1）
+        ## コピー先の左上セル（例: F1）
         dest_start_cell = ws.cell(row=1, column= col_count + col_offset)
 
         def copy_cell(src_cell, dest_cell):
@@ -251,7 +251,7 @@ if st.button('目次セットアップする'):
     fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
     # 行2の1列目(A)から5列目(E)まで色を適用
-    st.write('ALL' & all_n)
+    st.write(all_n)
     st.write(bb_n)
     daimei_row_n = (all_n % 8) * 3 + 2
     daimei_col_n = (all_n // 8) * 5 + 1
