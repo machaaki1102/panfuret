@@ -251,8 +251,12 @@ if st.button('目次セットアップする'):
     fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
     # 行2の1列目(A)から5列目(E)まで色を適用
+    st.write(all_n)
+    st.write(bb_n)
     daimei_row_n = (all_n % 8) * 3 + 2
     daimei_col_n = (all_n // 8) * 5 + 1
+    st.write(daimei_row_n)
+    st.write(daimei_col_n)
 
     for col in range(0, 6):  # 1列目(A)から5列目(E)
         ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
