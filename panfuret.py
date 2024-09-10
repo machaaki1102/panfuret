@@ -257,12 +257,12 @@ if st.button('目次セットアップする'):
     koumoku = 1
     #daimei_row_n = (all_n % 8) * 3 + 2
     daimei_row_n = ((all_n  + (koumoku * 3)) % 24) + 1
-    daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5
+    daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
 
     for fertilizer in selected_fertilizer:
         selected_row = df[df['肥料名称'] == fertilizer]
             
-        name = ws.cell(row=daimei_row_n , column=1 + daimei_col_n)
+        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
         name.value = selected_row['肥料名称'].values[0]
       
         all_n += 1
