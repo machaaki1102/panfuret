@@ -299,9 +299,19 @@ if st.button('目次セットアップする'):
     
     # 場合分け
     if all_n % 3 == 1:
-        daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-        st.write(f'いまの行数は{daimei_row_n}')
-        st.write(f'いまの列数は{daimei_col_n}')
+        for fertilizer in selected_fertilizer_kasei:
+            selected_row = df[df['肥料名称'] == fertilizer]
+
+            daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+            daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
+            
+            name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+            name.value = selected_row['肥料名称'].values[0]
+
+            all_n += 1 
+        #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+        #st.write(f'いまの行数は{daimei_row_n}')
+        #st.write(f'いまの列数は{daimei_col_n}')
     elif all_n % 3 == 2:
         daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
         st.write(f'いまの行数は{daimei_row_n}')
