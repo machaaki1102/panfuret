@@ -132,15 +132,25 @@ if st.button('目次セットアップする'):
     count_ekihi_mokuji = selected_fertilizer_count_ekihi
     count_kasei_mokuji = selected_fertilizer_count_kasei 
 
+    
+
     #必要分だけコピーする。
     if selected_fertilizer_count > 0:
-        count_mokuji = selected_fertilizer_count + 1
+        count_mokuji = ((count_mokuji - 1) // 3) 
+        count_mokuji = count_mokuji + 2
 
     if selected_fertilizer_count_ekihi > 0:
-        count_ekihi_mokuji = selected_fertilizer_count_ekihi + 1
-
+        count_kasei_ekihi = ((count_kesei_ekihi - 1) // 3) 
+        count_kasei_ekihi = count_kasei_ekihi + 2
+    
     if selected_fertilizer_count_kasei > 0:
-        count_kasei_mokuji = selected_fertilizer_count_kasei + 1
+        count_kasei_mokuji = ((count_kesei_mokuji - 1) // 3) 
+        count_kasei_mokuji = count_kasei_mokuji + 2
+    #if selected_fertilizer_count_ekihi > 0:
+    #    count_ekihi_mokuji = selected_fertilizer_count_ekihi + 1
+
+    #if selected_fertilizer_count_kasei > 0:
+    #    count_kasei_mokuji = selected_fertilizer_count_kasei + 1
 
     #st.write(count_mokuji)
     #st.write(count_ekihi_mokuji)
@@ -148,7 +158,7 @@ if st.button('目次セットアップする'):
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
     
-    #st.write(all_count)
+    st.write(all_count)
 
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
