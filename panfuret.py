@@ -148,7 +148,7 @@ if st.button('目次セットアップする'):
         count_kasei_mokuji = count_kasei_mokuji + 2
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
-    
+    st.write(all_count)
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
     # ワークシートを選択する（シート名を指定する）
