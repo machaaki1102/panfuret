@@ -202,25 +202,29 @@ if st.button('目次セットアップする'):
                     ws.column_dimensions[col_letter].width = width
 
     # いらないところを消す
-    number = m + 1  # mが0からカウントとなるため、+1とする
-    kesu_offset = (number // 2) * 13
+    #number = m + 1  # mが0からカウントとなるため、+1とする
+    shita_offset = (all_count % 8) * 3
+    migi_offset = (all_count // 8) * 5
+    
+    st.write(shita_offset)
+    st.write(migi_offset)
+    
+    # 奇数の時のみ実行する
+    if shita_offset != 0:
+        # A1:M44 の範囲のセルをループする
+        for row in ws.iter_rows(min_row=1 + shita_offset, max_row=25, min_col=1 + migi_offset, max_col=5 + migi_offset):
+            for cell in row:
+            # セルの文字を消す
+                cell.value = None
 
-            # 奇数の時のみ実行する
-    #        if number % 2 != 0:
-                # A1:M44 の範囲のセルをループする
-    #            for row in ws.iter_rows(min_row=24, max_row=42, min_col=1 + kesu_offset, max_col=13 + kesu_offset):
-    #                for cell in row:
-                        # セルの文字を消す
-    #                    cell.value = None
+            # セルの罫線を消す
+                cell.border = Border()
 
-                        # セルの罫線を消す
-    #                    cell.border = Border()
+            # セルの背景色を消す (デフォルトは白)
+                cell.fill = PatternFill(fill_type=None)
 
-                        # セルの背景色を消す (デフォルトは白)
-    #                    cell.fill = PatternFill(fill_type=None)
-
-                        # セルのフォントスタイルをデフォルトにリセット
-    #                    cell.font = Font()
+            # セルのフォントスタイルをデフォルトにリセット                   
+                cell.font = Font()
 
     wb.save('目次_finish.xlsx')
 
