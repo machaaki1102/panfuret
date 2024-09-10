@@ -158,7 +158,7 @@ if st.button('目次セットアップする'):
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
     
-    st.write(all_count)
+    #st.write(all_count)
 
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
@@ -170,13 +170,13 @@ if st.button('目次セットアップする'):
     #count = (all_count_pulas // 8) + 1
     count = (all_count // 8)
     count += 1
-    st.write(count)
+    #st.write(count)
     #st.write(count)
     for i in range(0, count):
         row_count = 1
         col_count = 1
         col_offset = i * 5
-        st.write(col_offset)
+        #st.write(col_offset)
         # コピー元の範囲（例: A1からE25）
         source_range = [[ws.cell(row=r, column=c) for c in range(1, 5)] for r in range(1, 25)]
 
