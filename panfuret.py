@@ -310,8 +310,9 @@ if st.button('目次セットアップする'):
 
             all_n += 1 
         #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-        #st.write(f'いまの行数は{daimei_row_n}')
-        #st.write(f'いまの列数は{daimei_col_n}')
+            st.write(f'いまの行数は{daimei_row_n}')
+            st.write(f'いまの列数は{daimei_col_n}')
+            
     elif all_n % 3 == 2:
         daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
         st.write(f'いまの行数は{daimei_row_n}')
