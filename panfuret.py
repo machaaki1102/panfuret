@@ -254,8 +254,8 @@ if st.button('目次セットアップする'):
         all_n += 1
         daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
         daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
-　　
-    st.write(all_n)　　
+
+    st.write(all_n)
 
     #BB名を貼り付け
     # 行2の1列目(A)から5列目(E)ま
