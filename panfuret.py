@@ -206,6 +206,7 @@ if st.button('目次セットアップする'):
     shita_offset = (all_count % 8) * 3
     migi_offset = (all_count // 8) * 5
     
+    st.write(all_count)
     st.write(shita_offset)
     st.write(migi_offset)
     # 奇数の時のみ実行する
