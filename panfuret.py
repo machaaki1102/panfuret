@@ -257,7 +257,7 @@ if st.button('目次セットアップする'):
         name.value = selected_row['肥料名称'].values[0]
       
         all_n += 1
-        daimei_row_n = ((all_n - 1 +(koumoku * 3)) % 24) + 1
+        daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
         daimei_col_n = ((all_n - 1 + (koumoku * 3))// 24) * 5
 
     st.write(all_n)    #bb_n += 1
