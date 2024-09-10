@@ -238,6 +238,8 @@ if st.button('目次セットアップする'):
 
     all_n = 0
     bb_n = 0
+    row_n = all_n + 2
+    col_n = ((all_n + 1) // 8)
 
     for i, fertilizer_name in enumerate(fertilizer_names):
         fertilizer_value = fertilizer_name
@@ -248,14 +250,17 @@ if st.button('目次セットアップする'):
     fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
     # 行2の1列目(A)から5列目(E)まで色を適用
-    row = 2
-    col = 1
-    for col in range(1, 6):  # 1列目(A)から5列目(E)
-        ws.cell(row=row, column=col).fill = fill_color
 
-    name = ws.cell(row=row , column=col)
+    for col in range(1, 6):  # 1列目(A)から5列目(E)
+        ws.cell(row=row_n, column=col).fill = fill_color
+    
+
+    name = ws.cell(row=row , column=col_n)
     #name.value = selected_row['肥料名称'].values[0]
     name.value = '化成肥料'
+    # 文字色を白に設定
+    white_font = Font(color="FFFFFF")
+    name.font = white_font
             
 
 # 保存する場合
