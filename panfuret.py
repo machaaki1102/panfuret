@@ -156,6 +156,7 @@ if st.button('目次セットアップする'):
     ## 必要数
     st.write(all_count)
     count = ((all_count - 1) // 8)
+    #count = (all_count // 8)
     count += 1
     st.write(count)
     for i in range(0, count):
@@ -258,7 +259,7 @@ if st.button('目次セットアップする'):
       
         all_n += 1
         daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
-        daimei_col_n = ((all_n - 1 + (koumoku * 3))// 24) * 5
+        daimei_col_n = ((all_n + (koumoku * 3))// 24) * 5
 
     st.write(all_n)    #bb_n += 1
 # ワークブックとシートを作成
