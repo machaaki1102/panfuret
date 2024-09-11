@@ -267,7 +267,7 @@ if st.button('目次セットアップする'):
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
                     # フォントを太文字に設定
-                    bold_font = Font(bold=True)
+                    bold_font = Font(bold=True, size=16)
                     # セルに太文字のフォントを適用
                     name.font = bold_font
 
