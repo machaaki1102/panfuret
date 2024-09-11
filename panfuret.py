@@ -292,12 +292,12 @@ if st.button('目次セットアップする'):
                     name.value = selected_fertilizer_kasei.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
-                
+                    # フォントを太文字に設定
+                    bold_font = Font(bold=True, size=16)
+                    # セルに太文字のフォントを適用
+                    name.font = bold_font
             page_number +=1
             in_count += 1
-
-    st.write(in_count)
-
 
     for m in range(count_ekihi_mokuji):   
         row_offset = (in_count % 8) *3
@@ -320,50 +320,8 @@ if st.button('目次セットアップする'):
             page_number +=1
             in_count += 1
 
-    #st.write(f'all_nは{all_n}')
-    #st.write(f'daimei_row_nを{daimei_row_n}')
-    #st.write(f'daimei_col_nを{daimei_col_n}')
-
-    #if selected_fertilizer:
-    #    koumoku += 1
-    
-    # 場合分け
-    #selected_fertilizer_kasei
-    #if all_n % 3 == 1:
-    #    for fertilizer in selected_fertilizer_kasei:
-    #        selected_row = df[df['肥料名称'] == fertilizer]#
-
-    #        daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-    #        daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
-            
-    #        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
-    #        name.value = selected_row['肥料名称'].values[0]
-
-    #        all_n += 1 
-        #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-    #        st.write(f'いまの行数は{daimei_row_n}')
-    #        st.write(f'いまの列数は{daimei_col_n}')
-
-    #    daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
-    ##    st.write(f'いまの行数は{daimei_row_n}')
-     #   st.write(f'いまの列数は{daimei_col_n}')
-    #elif all_n % 3 == 0:
-    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
-    #    st.write(f'いまの行数は{daimei_row_n}')
-    ##    st.write(f'いまの列数は{daimei_col_n}')
-    #else:
-    #    st.write("all_n // 3 は 1でも2でも0でもありません")
-
-#=================================================
 # 保存する場合
     wb.save("目次_finish.xlsx")
-#==========================================
-
-
-
-
-
-
 
 
 
