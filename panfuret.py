@@ -706,22 +706,19 @@ if st.button('セットアップする'):
         count_kasei_mokuji = count_kasei_mokuji + 2
     
     all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
-    #st.write(all_count)
+
     # ワークブックをロードする
     wb = openpyxl.load_workbook('目次.xlsx')
     # ワークシートを選択する（シート名を指定する）
     ws = wb['目次']
-    ## 必要数
-    #st.write(all_count)
+    # 必要数
     count = ((all_count - 1) // 8)
-    #count = (all_count // 8)
     count += 1
-    #st.write(count)
+
     for i in range(0, count):
         row_count = 1
         col_count = 1
         col_offset = i * 5
-        #st.write(col_offset)
         # コピー元の範囲（例: A1からE25）
         source_range = [[ws.cell(row=r, column=c) for c in range(1, 5)] for r in range(1, 25)]
 
@@ -861,7 +858,7 @@ if st.button('セットアップする'):
     for m in range(count_ekihi_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        st.write(m)
+        
         if m == 0:
             #目次の題名を入れる。
             name_insert('液肥','B5E6A2')
