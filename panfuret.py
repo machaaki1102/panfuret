@@ -316,14 +316,15 @@ if st.button('目次セットアップする'):
                     name.value = selected_fertilizer_ekihi.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
-            
+                    # フォントを太文字に設定
+                    bold_font = Font(bold=True, size=16)
+                    # セルに太文字のフォントを適用
+                    name.font = bold_font
             page_number +=1
             in_count += 1
 
 # 保存する場合
     wb.save("目次_finish.xlsx")
-
-
 
 
 if st.button('セットアップする'):
