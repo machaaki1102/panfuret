@@ -208,10 +208,8 @@ if st.button('目次セットアップする'):
     shita_offset = (all_count % 8) * 3
     migi_offset = (all_count // 8) * 5
     
-    #st.write(all_count)
-    #st.write(shita_offset)
-    #st.write(migi_offset)
-    # 奇数の時のみ実行する
+  
+    # いらない箇所を消す
     if shita_offset != 0:
         # A1:M44 の範囲のセルをループする
         for row in ws.iter_rows(min_row=1 + shita_offset, max_row=25, min_col=1 + migi_offset, max_col=5 + migi_offset):
