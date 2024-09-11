@@ -363,7 +363,7 @@ if st.button('目次セットアップする'):
     for m in range(count_kasei_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-　　　　st.write(m)
+        st.write(m)
         if m == 0:
             #目次の題名を入れる。
             name_insert('化成肥料')
