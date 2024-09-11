@@ -322,17 +322,20 @@ if st.button('目次セットアップする'):
     start_row = 1
     start_col = 1 
     
-    st.write(selected_fertilizer)
-    for fertilizer in selected_fertilizer:
-        selected_row = df[df['肥料名称'] == fertilizer]
-        st.write(selected_fertilizer)
-        row_offset = (in_count % 8) *3
-        col_offset = (in_count // 8) *5     
+    
+    #for fertilizer in selected_fertilizer:
+    #    selected_row = df[df['肥料名称'] == fertilizer]
+    #st.write(selected_fertilizer)
+    row_offset = (in_count % 8) *3
+    col_offset = (in_count // 8) *5     
          
-        for i in range(0,3):    
-            name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
-            name.value = selected_row['肥料名称'].values[0]
+    for i in range(0,3):    
+        name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+    
+        if not selected_fertilizer.empty:
+            name.value = selected_fertilizer.pop(0)
       
+    if not selected_fertilizer.empty:
         in_count += 1
 
     #st.write(f'all_nは{all_n}')
@@ -344,31 +347,30 @@ if st.button('目次セットアップする'):
     
     # 場合分け
     #selected_fertilizer_kasei
-    if all_n % 3 == 1:
-        for fertilizer in selected_fertilizer_kasei:
-            selected_row = df[df['肥料名称'] == fertilizer]
+    #if all_n % 3 == 1:
+    #    for fertilizer in selected_fertilizer_kasei:
+    #        selected_row = df[df['肥料名称'] == fertilizer]#
 
-            daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-            daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
+    #        daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+    #        daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
             
-            name = ws.cell(row=daimei_row_n , column=daimei_col_n)
-            name.value = selected_row['肥料名称'].values[0]
+    #        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+    #        name.value = selected_row['肥料名称'].values[0]
 
-            all_n += 1 
+    #        all_n += 1 
         #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-            st.write(f'いまの行数は{daimei_row_n}')
-            st.write(f'いまの列数は{daimei_col_n}')
+    #        st.write(f'いまの行数は{daimei_row_n}')
+    #        st.write(f'いまの列数は{daimei_col_n}')
 
-    elif all_n % 3 == 2:
-        daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
-        st.write(f'いまの行数は{daimei_row_n}')
-        st.write(f'いまの列数は{daimei_col_n}')
-    elif all_n % 3 == 0:
-        daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
-        st.write(f'いまの行数は{daimei_row_n}')
-        st.write(f'いまの列数は{daimei_col_n}')
-    else:
-        st.write("all_n // 3 は 1でも2でも0でもありません")
+    #    daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
+    ##    st.write(f'いまの行数は{daimei_row_n}')
+     #   st.write(f'いまの列数は{daimei_col_n}')
+    #elif all_n % 3 == 0:
+    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
+    #    st.write(f'いまの行数は{daimei_row_n}')
+    ##    st.write(f'いまの列数は{daimei_col_n}')
+    #else:
+    #    st.write("all_n // 3 は 1でも2でも0でもありません")
 
 #=================================================
 # 保存する場合
