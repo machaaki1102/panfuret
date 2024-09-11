@@ -352,9 +352,8 @@ if st.button('目次セットアップする'):
             #銘柄名を入力していく。
             for i in range(0,3):    
                 name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
-                st.write(F'み{row_offset}')
 
-                if not selected_fertilizer_mo:
+                if selected_fertilizer_mo:
                     name.value = selected_fertilizer_mo.pop(0)
                     st.write('1')
             in_count += 1
