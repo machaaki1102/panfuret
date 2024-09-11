@@ -15,6 +15,7 @@ st.markdown(
         unsafe_allow_html=True
     )
 
+
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
 def load_data(file_path):
@@ -74,9 +75,9 @@ if st.button('チェックマークをリセット<注意:最後のチェック�
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
     st.rerun()  # リセット後に再描画
 
-# 1列目に球技のチェックボックスを作成
+# 1列目にBBのチェックボックスを作成
 with col1:
-    #st.header("BB")
+
     # ヘッダーの文字サイズを小さくする
     st.markdown(
         "<h3 style='font-size:25px;'>BB</h3>",  # 'font-size'でサイズを指定
@@ -123,6 +124,252 @@ with col3:
 selected_fertilizer_count = len(selected_fertilizer)
 selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
+
+
+#目次作成
+if st.button('目次セットアップする'):
+
+    count_mokuji = selected_fertilizer_count
+    count_ekihi_mokuji = selected_fertilizer_count_ekihi
+    count_kasei_mokuji = selected_fertilizer_count_kasei 
+
+    #コピーするの数を確認。
+    if selected_fertilizer_count > 0:
+        count_mokuji = ((count_mokuji - 1) // 3) 
+    #    st.write(count_mokuji)
+        count_mokuji = count_mokuji + 2
+
+    if selected_fertilizer_count_ekihi > 0:
+        count_ekihi_mokuji = ((count_ekihi_mokuji - 1) // 3) 
+        count_ekihi_mokuji = count_ekihi_mokuji + 2
+    
+    if selected_fertilizer_count_kasei > 0:
+        count_kasei_mokuji = ((count_kasei_mokuji - 1) // 3) 
+        count_kasei_mokuji = count_kasei_mokuji + 2
+    
+    all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
+    #st.write(all_count)
+    # ワークブックをロードする
+    wb = openpyxl.load_workbook('目次.xlsx')
+    # ワークシートを選択する（シート名を指定する）
+    ws = wb['目次']
+    ## 必要数
+    #st.write(all_count)
+    count = ((all_count - 1) // 8)
+    #count = (all_count // 8)
+    count += 1
+    #st.write(count)
+    for i in range(0, count):
+        row_count = 1
+        col_count = 1
+        col_offset = i * 5
+        #st.write(col_offset)
+        # コピー元の範囲（例: A1からE25）
+        source_range = [[ws.cell(row=r, column=c) for c in range(1, 5)] for r in range(1, 25)]
+
+        ## コピー先の左上セル（例: F1）
+        dest_start_cell = ws.cell(row=1, column= col_count + col_offset)
+
+        def copy_cell(src_cell, dest_cell):
+            dest_cell.value = src_cell.value
+            if src_cell.has_style:
+                dest_cell.font = copy(src_cell.font)
+                dest_cell.border = copy(src_cell.border)
+                dest_cell.fill = copy(src_cell.fill)
+                dest_cell.number_format = copy(src_cell.number_format)
+                dest_cell.protection = copy(src_cell.protection)
+                dest_cell.alignment = copy(src_cell.alignment)
+
+        # コピー元範囲の行数と列数を取得する
+        row_count = len(source_range)
+        col_count = len(source_range[0])
+
+        # コピー元範囲をループしてコピー先にペーストする
+        for i in range(row_count):
+            for j in range(col_count):
+                src_cell = source_range[i][j]
+                dest_cell = ws.cell(row=dest_start_cell.row + i, column=dest_start_cell.column + j)
+                copy_cell(src_cell, dest_cell)
+
+                # 指定された列幅にコピー元とコピー先の列幅を設定する
+                specified_widths = [8.08, 8.08, 8.08, 8.08, 4.04, 8.08]
+
+                # コピー元の列幅を設定する
+                for idx, width in enumerate(specified_widths, start=source_range[0][0].column):
+                    col_letter = openpyxl.utils.get_column_letter(idx)
+                    ws.column_dimensions[col_letter].width = width
+
+                # コピー先の列幅を設定する
+                for idx, width in enumerate(specified_widths, start=dest_start_cell.column):
+                    col_letter = openpyxl.utils.get_column_letter(idx)
+                    ws.column_dimensions[col_letter].width = width
+
+    # いらないところを消すのためのオフセット設定
+    shita_offset = (all_count % 8) * 3
+    migi_offset = (all_count // 8) * 5
+    
+  
+    # いらない箇所を消す
+    if shita_offset != 0:
+        # A1:M44 の範囲のセルをループする
+        for row in ws.iter_rows(min_row=1 + shita_offset, max_row=25, min_col=1 + migi_offset, max_col=5 + migi_offset):
+            for cell in row:
+            # セルの文字を消す
+                cell.value = None
+
+            # セルの罫線を消す
+                cell.border = Border()
+
+            # セルの背景色を消す (デフォルトは白)
+                cell.fill = PatternFill(fill_type=None)
+
+            # セルのフォントスタイルをデフォルトにリセット                   
+                cell.font = Font()
+
+
+    def name_insert(nam,cor):
+        # RGB(91, 155, 213)を16進数で指定'5B9BD5'
+        fill_color = PatternFill(start_color=cor, end_color=cor, fill_type='solid')
+
+        for col in range(0, 5):  # 1列目(A)から5列目(E)
+            ws.cell(row=start_row + row_offset + 1, column=start_col + col_offset + col).fill = fill_color
+        
+        name = ws.cell(row=start_row + row_offset + 1 , column=start_col + col_offset)
+
+        name.value = nam
+        # 文字色を白に設定
+        white_font = Font(color="FFFFFF", size=16, bold=True)
+        name.font = white_font
+    
+    #目次のデータ入力
+    in_count = 0
+    start_row = 1
+    start_col = 1 
+    selected_fertilizer_mo =  selected_fertilizer
+    selected_fertilizer_kasei_mo =  selected_fertilizer_kasei
+    selected_fertilizer_ekihi_mo =  selected_fertilizer_ekihi  
+    page_number = 1
+    #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
+    #st.write(selected_fertilizer)
+    #st.write(selected_fertilizer_mo)
+    for m in range(count_mokuji):   
+        row_offset = (in_count % 8) *3
+        col_offset = (in_count // 8) *5        
+        #st.write(row_offset)
+        #st.write(col_offset)
+        #st.write(m)
+        if m == 0:
+            #目次の題名を入れる。
+            name_insert('BB肥料','5B9BD5')
+            in_count += 1    
+        else:    
+            #銘柄名を入力していく。
+            for i in range(0,3):    
+                name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+
+
+                if selected_fertilizer_mo:
+                    name.value = selected_fertilizer_mo.pop(0)
+                    name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
+                    name.value = page_number
+                
+            page_number +=1
+            in_count += 1
+
+    #st.write(in_count)
+
+    for m in range(count_kasei_mokuji):   
+        row_offset = (in_count % 8) *3
+        col_offset = (in_count // 8) *5        
+        st.write(m)
+        if m == 0:
+            #目次の題名を入れる。
+            # RGB(237, 125, 49) を 16 進数に変換すると '#ED7D31'
+            name_insert('化成','ED7D31')
+            in_count += 1    
+        else:    
+            #銘柄名を入力していく。
+            for i in range(0,3):    
+                name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+
+                if selected_fertilizer_kasei_mo:
+                    name.value = selected_fertilizer_kasei.pop(0)
+                    name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
+                    name.value = page_number
+                
+            page_number +=1
+            in_count += 1
+
+    st.write(in_count)
+
+
+    for m in range(count_ekihi_mokuji):   
+        row_offset = (in_count % 8) *3
+        col_offset = (in_count // 8) *5        
+        st.write(m)
+        if m == 0:
+            #目次の題名を入れる。
+            name_insert('液肥','B5E6A2')
+            in_count += 1    
+        else:    
+            #銘柄名を入力していく。
+            for i in range(0,3):    
+                name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+
+                if selected_fertilizer_ekihi_mo:
+                    name.value = selected_fertilizer_ekihi.pop(0)
+                    name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
+                    name.value = page_number
+            
+            page_number +=1
+            in_count += 1
+
+    #st.write(f'all_nは{all_n}')
+    #st.write(f'daimei_row_nを{daimei_row_n}')
+    #st.write(f'daimei_col_nを{daimei_col_n}')
+
+    #if selected_fertilizer:
+    #    koumoku += 1
+    
+    # 場合分け
+    #selected_fertilizer_kasei
+    #if all_n % 3 == 1:
+    #    for fertilizer in selected_fertilizer_kasei:
+    #        selected_row = df[df['肥料名称'] == fertilizer]#
+
+    #        daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+    #        daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
+            
+    #        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+    #        name.value = selected_row['肥料名称'].values[0]
+
+    #        all_n += 1 
+        #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
+    #        st.write(f'いまの行数は{daimei_row_n}')
+    #        st.write(f'いまの列数は{daimei_col_n}')
+
+    #    daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
+    ##    st.write(f'いまの行数は{daimei_row_n}')
+     #   st.write(f'いまの列数は{daimei_col_n}')
+    #elif all_n % 3 == 0:
+    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
+    #    st.write(f'いまの行数は{daimei_row_n}')
+    ##    st.write(f'いまの列数は{daimei_col_n}')
+    #else:
+    #    st.write("all_n // 3 は 1でも2でも0でもありません")
+
+#=================================================
+# 保存する場合
+    wb.save("目次_finish.xlsx")
+#==========================================
+
+
+
+
+
+
+
+
 
 
 if st.button('セットアップする'):
@@ -727,5 +974,17 @@ with col6:
         label="Download Excel File＜液肥＞",  # ボタンのラベル
         data=excel_data_ekihi,  # ダウンロードするデータ
         file_name='ekihi_tem_finish.xlsx',  # ダウンロード時のファイル名
+        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+    )
+
+
+#================
+with open('目次_finish.xlsx', 'rb') as file:
+        mokuji_ekihi = file.read()
+
+st.download_button(
+        label="Download Excel File＜目次＞",  # ボタンのラベル
+        data=mokuji_ekihi,  # ダウンロードするデータ
+        file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )

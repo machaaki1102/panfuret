@@ -125,15 +125,14 @@ selected_fertilizer_count_ekihi = len(selected_fertilizer_ekihi)
 selected_fertilizer_count_kasei = len(selected_fertilizer_kasei)
 
 
-#目次作成=========== =
+#目次作成
 if st.button('目次セットアップする'):
 
     count_mokuji = selected_fertilizer_count
     count_ekihi_mokuji = selected_fertilizer_count_ekihi
     count_kasei_mokuji = selected_fertilizer_count_kasei 
 
-    #st.write(count_mokuji)
-    #必要分だけコピーする。
+    #コピーするの数を確認。
     if selected_fertilizer_count > 0:
         count_mokuji = ((count_mokuji - 1) // 3) 
     #    st.write(count_mokuji)
@@ -204,7 +203,7 @@ if st.button('目次セットアップする'):
                     col_letter = openpyxl.utils.get_column_letter(idx)
                     ws.column_dimensions[col_letter].width = width
 
-    # いらないところを消す
+    # いらないところを消すのためのオフセット設定
     shita_offset = (all_count % 8) * 3
     migi_offset = (all_count // 8) * 5
     
