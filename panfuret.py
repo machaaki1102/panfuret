@@ -336,7 +336,7 @@ if st.button('目次セットアップする'):
     start_col = 1 
     selected_fertilizer_mo =  selected_fertilizer 
     #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
-
+    st.write(selected_fertilizer)
     for m in range(count_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
