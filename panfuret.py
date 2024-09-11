@@ -334,7 +334,7 @@ if st.button('目次セットアップする'):
     in_count = 0
     start_row = 1
     start_col = 1 
-    elected_fertilizer_mo =  selected_fertilizer 
+    selected_fertilizer_mo =  selected_fertilizer 
     #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
 
     for m in range(count_mokuji):   
