@@ -321,7 +321,8 @@ if st.button('目次セットアップする'):
     in_count = 0
     start_row = 1
     start_col = 1 
-        
+    
+    st.write(selected_fertilizer)
     for fertilizer in selected_fertilizer:
         selected_row = df[df['肥料名称'] == fertilizer]
         st.write(selected_fertilizer)
@@ -334,12 +335,12 @@ if st.button('目次セットアップする'):
       
         in_count += 1
 
-    st.write(f'all_nは{all_n}')
-    st.write(f'daimei_row_nを{daimei_row_n}')
-    st.write(f'daimei_col_nを{daimei_col_n}')
+    #st.write(f'all_nは{all_n}')
+    #st.write(f'daimei_row_nを{daimei_row_n}')
+    #st.write(f'daimei_col_nを{daimei_col_n}')
 
-    if selected_fertilizer:
-        koumoku += 1
+    #if selected_fertilizer:
+    #    koumoku += 1
     
     # 場合分け
     #selected_fertilizer_kasei
