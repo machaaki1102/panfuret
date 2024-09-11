@@ -248,10 +248,9 @@ if st.button('目次セットアップする'):
         # 文字色を白に設定
 #        white_font = Font(color="FFFFFF", size=16, bold=True)
 #        name.font = white_font
-    def name_insert(nam):
-
-        # RGB(91, 155, 213)を16進数で指定
-        fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
+    def name_insert(nam,cor):
+        # RGB(91, 155, 213)を16進数で指定'5B9BD5'
+        fill_color = PatternFill(start_color=cor, end_color=cor, fill_type='solid')
 
         for col in range(0, 5):  # 1列目(A)から5列目(E)
             ws.cell(row=start_row + row_offset + 1, column=start_col + col_offset + col).fill = fill_color
@@ -349,7 +348,7 @@ if st.button('目次セットアップする'):
         #st.write(m)
         if m == 0:
             #目次の題名を入れる。
-            name_insert('BB肥料')
+            name_insert('BB肥料','5B9BD5')
             in_count += 1    
         else:    
             #銘柄名を入力していく。
@@ -370,7 +369,8 @@ if st.button('目次セットアップする'):
         st.write(m)
         if m == 0:
             #目次の題名を入れる。
-            name_insert('化成')
+            # RGB(237, 125, 49) を 16 進数に変換すると '#ED7D31'
+            name_insert('化成','#ED7D31')
             in_count += 1    
         else:    
             #銘柄名を入力していく。
@@ -391,7 +391,7 @@ if st.button('目次セットアップする'):
         st.write(m)
         if m == 0:
             #目次の題名を入れる。
-            name_insert('液肥')
+            name_insert('液肥','#B5E6A2')
             in_count += 1    
         else:    
             #銘柄名を入力していく。
