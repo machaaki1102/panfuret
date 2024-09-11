@@ -324,7 +324,7 @@ if st.button('目次セットアップする'):
         
     for fertilizer in selected_fertilizer:
         selected_row = df[df['肥料名称'] == fertilizer]
-        st.write(selected_row)
+        st.write(selected_fertilizer)
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5     
          
