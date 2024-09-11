@@ -334,7 +334,8 @@ if st.button('目次セットアップする'):
     in_count = 0
     start_row = 1
     start_col = 1 
-    selected_fertilizer_mo =  selected_fertilizer 
+    selected_fertilizer_mo =  selected_fertilizer
+    selected_fertilizer_kasei_mo =  selected_fertilizer_kasei 
     #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
     #st.write(selected_fertilizer)
     #st.write(selected_fertilizer_mo)
@@ -373,8 +374,8 @@ if st.button('目次セットアップする'):
             for i in range(0,3):    
                 name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
 
-                if selected_fertilizer_mo:
-                    name.value = selected_fertilizer_mo.pop(0)
+                if selected_fertilizer_kasei_mo:
+                    name.value = selected_fertilizer_kasei.pop(0)
     #                st.write('1')
             in_count += 1
 
