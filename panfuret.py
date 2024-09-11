@@ -248,15 +248,11 @@ if st.button('目次セットアップする'):
     selected_fertilizer_kasei_mo =  selected_fertilizer_kasei
     selected_fertilizer_ekihi_mo =  selected_fertilizer_ekihi  
     page_number = 1
-    #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
-    #st.write(selected_fertilizer)
-    #st.write(selected_fertilizer_mo)
+ 
     for m in range(count_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        #st.write(row_offset)
-        #st.write(col_offset)
-        #st.write(m)
+
         if m == 0:
             #目次の題名を入れる。
             name_insert('BB肥料','5B9BD5')
@@ -266,23 +262,25 @@ if st.button('目次セットアップする'):
             for i in range(0,3):    
                 name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
 
-
                 if selected_fertilizer_mo:
                     name.value = selected_fertilizer_mo.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
-                
+                    # フォントを太文字に設定
+                    bold_font = Font(bold=True)
+
+                    # セルに太文字のフォントを適用
+                    name.font = bold_font
+
             page_number +=1
             in_count += 1
-
-    #st.write(in_count)
 
     for m in range(count_kasei_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        st.write(m)
+
+        #目次の題名を入れる。
         if m == 0:
-            #目次の題名を入れる。
             # RGB(237, 125, 49) を 16 進数に変換すると '#ED7D31'
             name_insert('化成','ED7D31')
             in_count += 1    
