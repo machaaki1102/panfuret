@@ -370,7 +370,7 @@ if st.button('目次セットアップする'):
         st.write(m)
         if m == 0:
             #目次の題名を入れる。
-            name_insert('化成肥料')
+            name_insert('化成')
             in_count += 1    
         else:    
             #銘柄名を入力していく。
