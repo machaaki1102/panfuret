@@ -360,7 +360,7 @@ if st.button('目次セットアップする'):
                     name.value = selected_fertilizer_mo.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = in_count
-                    
+
             in_count += 1
 
     #st.write(in_count)
@@ -381,7 +381,8 @@ if st.button('目次セットアップする'):
 
                 if selected_fertilizer_kasei_mo:
                     name.value = selected_fertilizer_kasei.pop(0)
-    #                st.write('1')
+                    name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
+                    name.value = in_count
             in_count += 1
 
     st.write(in_count)
@@ -402,7 +403,8 @@ if st.button('目次セットアップする'):
 
                 if selected_fertilizer_ekihi_mo:
                     name.value = selected_fertilizer_ekihi.pop(0)
-        #                st.write('1')
+                    name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
+                    name.value = in_count
             in_count += 1
 
     #st.write(f'all_nは{all_n}')
