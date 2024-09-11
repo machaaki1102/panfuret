@@ -342,7 +342,7 @@ if st.button('目次セットアップする'):
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
         st.write(row_offset)
-        st.writt(col_offset)
+        st.write(col_offset)
         if m == 0:
             #目次の題名を入れる。
             name_insert('BB肥料')    
