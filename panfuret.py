@@ -268,7 +268,6 @@ if st.button('目次セットアップする'):
                     name.value = page_number
                     # フォントを太文字に設定
                     bold_font = Font(bold=True)
-
                     # セルに太文字のフォントを適用
                     name.font = bold_font
 
