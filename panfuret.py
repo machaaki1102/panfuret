@@ -341,7 +341,8 @@ if st.button('目次セットアップする'):
     for m in range(count_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        
+        st.write(row_offset)
+        st.writt(col_offset)
         if m == 0:
             #目次の題名を入れる。
             name_insert('BB肥料')    
@@ -352,7 +353,7 @@ if st.button('目次セットアップする'):
             
                 if not selected_fertilizer_mo:
                     name.value = selected_fertilizer_mo.pop(0)
-            
+                    
             in_count += 1
 
     #st.write(f'all_nは{all_n}')
