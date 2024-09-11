@@ -370,7 +370,7 @@ if st.button('目次セットアップする'):
         if m == 0:
             #目次の題名を入れる。
             # RGB(237, 125, 49) を 16 進数に変換すると '#ED7D31'
-            name_insert('化成','#ED7D31')
+            name_insert('化成','ED7D31')
             in_count += 1    
         else:    
             #銘柄名を入力していく。
