@@ -154,11 +154,11 @@ if st.button('目次セットアップする'):
     # ワークシートを選択する（シート名を指定する）
     ws = wb['目次']
     ## 必要数
-    st.write(all_count)
+    #st.write(all_count)
     count = ((all_count - 1) // 8)
     #count = (all_count // 8)
     count += 1
-    st.write(count)
+    #st.write(count)
     for i in range(0, count):
         row_count = 1
         col_count = 1
