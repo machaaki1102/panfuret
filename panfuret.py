@@ -349,7 +349,7 @@ if st.button('目次セットアップする'):
             for i in range(0,3):    
                 name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
             
-                if not selected_fertilizer_mo.empty:
+                if not selected_fertilizer_mo:
                     name.value = selected_fertilizer_mo.pop(0)
             
             in_count += 1
