@@ -336,7 +336,7 @@ if st.button('目次セットアップする'):
     start_col = 1 
     selected_fertilizer_mo =  selected_fertilizer 
     #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
-    st.write(selected_fertilizer)
+    #st.write(selected_fertilizer)
     st.write(selected_fertilizer_mo)
     for m in range(count_mokuji):   
         row_offset = (in_count % 8) *3
@@ -351,10 +351,11 @@ if st.button('目次セットアップする'):
             #銘柄名を入力していく。
             for i in range(0,3):    
                 name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
-            
+                
+
                 if not selected_fertilizer_mo:
                     name.value = selected_fertilizer_mo.pop(0)
-                    
+                    st.write(selected_fertilizer_mo)
             in_count += 1
 
     #st.write(f'all_nは{all_n}')
