@@ -15,7 +15,6 @@ st.markdown(
         unsafe_allow_html=True
     )
 
-
 # ファイルパスを指定してExcelファイルを読み込む
 @st.cache_data
 def load_data(file_path):
@@ -75,9 +74,10 @@ if st.button('チェックマークをリセット<注意:最後のチェック�
     st.session_state.selected_fertilizer_ekihi = [False] * len(fertilizer_names_ekihi)
     st.rerun()  # リセット後に再描画
 
-# 1列目にBBのチェックボックスを作成
+# 1列目に球技のチェックボックスを作成
 with col1:
-    # ヘッダーの文字サイズを調整する
+    #st.header("BB")
+    # ヘッダーの文字サイズを小さくする
     st.markdown(
         "<h3 style='font-size:25px;'>BB</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
@@ -90,9 +90,9 @@ with col1:
         else:
             st.session_state.selected_fertilizer_bb[i] = False
 
-# 2列目に化成のチェックボックスを作成
+# 2列目に球技のチェックボックスを作成
 with col2:
-     # ヘッダーの文字サイズを調整する
+    ##st.header("化成")
     st.markdown(
         "<h3 style='font-size:25px;'>化成</h3>",  # 'font-size'でサイズを指定
         unsafe_allow_html=True
@@ -248,14 +248,11 @@ if st.button('目次セットアップする'):
     selected_fertilizer_kasei_mo =  selected_fertilizer_kasei
     selected_fertilizer_ekihi_mo =  selected_fertilizer_ekihi  
     page_number = 1
-
-    
+ 
     for m in range(count_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        #st.write(row_offset)
-        #st.write(col_offset)
-        #st.write(m)
+
         if m == 0:
             #目次の題名を入れる。
             name_insert('BB肥料','5B9BD5')
@@ -265,23 +262,24 @@ if st.button('目次セットアップする'):
             for i in range(0,3):    
                 name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
 
-
                 if selected_fertilizer_mo:
                     name.value = selected_fertilizer_mo.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
-                
+                    # フォントを太文字に設定
+                    bold_font = Font(bold=True, size=16)
+                    # セルに太文字のフォントを適用
+                    name.font = bold_font
+
             page_number +=1
             in_count += 1
-
-    #st.write(in_count)
 
     for m in range(count_kasei_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        st.write(m)
+
+        #目次の題名を入れる。
         if m == 0:
-            #目次の題名を入れる。
             # RGB(237, 125, 49) を 16 進数に変換すると '#ED7D31'
             name_insert('化成','ED7D31')
             in_count += 1    
@@ -294,12 +292,12 @@ if st.button('目次セットアップする'):
                     name.value = selected_fertilizer_kasei.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
-                
+                    # フォントを太文字に設定
+                    bold_font = Font(bold=True, size=16)
+                    # セルに太文字のフォントを適用
+                    name.font = bold_font
             page_number +=1
             in_count += 1
-
-    st.write(in_count)
-
 
     for m in range(count_ekihi_mokuji):   
         row_offset = (in_count % 8) *3
@@ -318,56 +316,15 @@ if st.button('目次セットアップする'):
                     name.value = selected_fertilizer_ekihi.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     name.value = page_number
-            
+                    # フォントを太文字に設定
+                    bold_font = Font(bold=True, size=16)
+                    # セルに太文字のフォントを適用
+                    name.font = bold_font
             page_number +=1
             in_count += 1
 
-    #st.write(f'all_nは{all_n}')
-    #st.write(f'daimei_row_nを{daimei_row_n}')
-    #st.write(f'daimei_col_nを{daimei_col_n}')
-
-    #if selected_fertilizer:
-    #    koumoku += 1
-    
-    # 場合分け
-    #selected_fertilizer_kasei
-    #if all_n % 3 == 1:
-    #    for fertilizer in selected_fertilizer_kasei:
-    #        selected_row = df[df['肥料名称'] == fertilizer]#
-
-    #        daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-    #        daimei_col_n = ((all_n  + (koumoku * 3))// 24) * 5 + 1
-            
-    #        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
-    #        name.value = selected_row['肥料名称'].values[0]
-
-    #        all_n += 1 
-        #daimei_row_n = ((all_n + 2 + (koumoku * 3)) % 24) + 1
-    #        st.write(f'いまの行数は{daimei_row_n}')
-    #        st.write(f'いまの列数は{daimei_col_n}')
-
-    #    daimei_row_n = ((all_n + 1 + (koumoku * 3)) % 24) + 1
-    ##    st.write(f'いまの行数は{daimei_row_n}')
-     #   st.write(f'いまの列数は{daimei_col_n}')
-    #elif all_n % 3 == 0:
-    #    daimei_row_n = ((all_n + (koumoku * 3)) % 24) + 1
-    #    st.write(f'いまの行数は{daimei_row_n}')
-    ##    st.write(f'いまの列数は{daimei_col_n}')
-    #else:
-    #    st.write("all_n // 3 は 1でも2でも0でもありません")
-
-#=================================================
 # 保存する場合
     wb.save("目次_finish.xlsx")
-#==========================================
-
-
-
-
-
-
-
-
 
 
 if st.button('セットアップする'):
