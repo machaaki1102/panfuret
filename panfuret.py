@@ -358,7 +358,7 @@ if st.button('目次セットアップする'):
                     st.write('1')
             in_count += 1
 
-st.write(in_count)
+    st.write(in_count)
     #st.write(f'all_nは{all_n}')
     #st.write(f'daimei_row_nを{daimei_row_n}')
     #st.write(f'daimei_col_nを{daimei_col_n}')
