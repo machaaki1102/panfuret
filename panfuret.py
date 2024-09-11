@@ -345,7 +345,8 @@ if st.button('目次セットアップする'):
         st.write(col_offset)
         if m == 0:
             #目次の題名を入れる。
-            name_insert('BB肥料')    
+            name_insert('BB肥料')
+            in_count += 1    
         else:    
             #銘柄名を入力していく。
             for i in range(0,3):    
