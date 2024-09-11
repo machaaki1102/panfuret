@@ -234,22 +234,35 @@ if st.button('目次セットアップする'):
     #BB名を貼り付け
     # 行2の1列目(A)から5列目(E)ま
     
+    #def name_insert(nam):
+
+        # RGB(91, 155, 213)を16進数で指定
+#        fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
+
+#        for col in range(0, 5):  # 1列目(A)から5列目(E)
+#            ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
+    
+#        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+
+#        name.value = nam
+        # 文字色を白に設定
+#        white_font = Font(color="FFFFFF", size=16, bold=True)
+#        name.font = white_font
     def name_insert(nam):
-        daimei_row_n = 2
-        daimei_col_n = 1
 
         # RGB(91, 155, 213)を16進数で指定
         fill_color = PatternFill(start_color='5B9BD5', end_color='5B9BD5', fill_type='solid')
 
         for col in range(0, 5):  # 1列目(A)から5列目(E)
-            ws.cell(row=daimei_row_n, column=daimei_col_n + col).fill = fill_color
-    
-        name = ws.cell(row=daimei_row_n , column=daimei_col_n)
+            ws.cell(row=start_row + row_offset + 1, column=start_col + col_offset + col).fill = fill_color
+        
+        name = ws.cell(row=start_row + row_offset + 1 , column=start_col + col_offset)
 
         name.value = nam
         # 文字色を白に設定
         white_font = Font(color="FFFFFF", size=16, bold=True)
         name.font = white_font
+
 #データ入力
 
 #    all_n = 0
@@ -321,22 +334,25 @@ if st.button('目次セットアップする'):
     in_count = 0
     start_row = 1
     start_col = 1 
-    
-    
-    #for fertilizer in selected_fertilizer:
-    #    selected_row = df[df['肥料名称'] == fertilizer]
-    #st.write(selected_fertilizer)
-    row_offset = (in_count % 8) *3
-    col_offset = (in_count // 8) *5     
-         
-    for i in range(0,3):    
-        name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
-    
-        if not selected_fertilizer.empty:
-            name.value = selected_fertilizer.pop(0)
-      
-    if not selected_fertilizer.empty:
-        in_count += 1
+    elected_fertilizer_mo =  selected_fertilizer 
+    #all_count = count_mokuji + count_ekihi_mokuji + count_kasei_mokuji
+
+    for m in range(count_mokuji):   
+        row_offset = (in_count % 8) *3
+        col_offset = (in_count // 8) *5        
+        
+        if m == 0:
+            #目次の題名を入れる。
+            name_insert('BB肥料')    
+        else:    
+            #銘柄名を入力していく。
+            for i in range(0,3):    
+                name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+            
+                if not selected_fertilizer_mo.empty:
+                    name.value = selected_fertilizer_mo.pop(0)
+            
+            in_count += 1
 
     #st.write(f'all_nは{all_n}')
     #st.write(f'daimei_row_nを{daimei_row_n}')
