@@ -358,7 +358,29 @@ if st.button('目次セットアップする'):
     #                st.write('1')
             in_count += 1
 
-    #st.write(in_count)
+    st.write(in_count)
+
+    for m in range(count_kasei_mokuji):   
+        row_offset = (in_count % 8) *3
+        col_offset = (in_count // 8) *5        
+　　　　st.write(m)
+        if m == 0:
+            #目次の題名を入れる。
+            name_insert('化成肥料')
+            in_count += 1    
+        else:    
+            #銘柄名を入力していく。
+            for i in range(0,3):    
+                name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset)
+
+                if selected_fertilizer_mo:
+                    name.value = selected_fertilizer_mo.pop(0)
+    #                st.write('1')
+            in_count += 1
+
+    st.write(in_count)
+
+
     #st.write(f'all_nは{all_n}')
     #st.write(f'daimei_row_nを{daimei_row_n}')
     #st.write(f'daimei_col_nを{daimei_col_n}')
