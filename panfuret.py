@@ -887,6 +887,8 @@ if st.button('セットアップする'):
             #page_number +=1
             in_count += 1
 
+    page_number += 1
+
     for m in range(count_ekihi_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
@@ -903,14 +905,21 @@ if st.button('セットアップする'):
                 if selected_fertilizer_ekihi_mo:
                     name.value = selected_fertilizer_ekihi.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
-                    #name.value = page_number
-                    # フォントを太文字に設定
-                    #bold_font = Font(bold=True, size=16)
+                    
+                    result = 1 if kasei_mo != 0 and kasei_mo % 1 == 0 else 0
+                    
+                    page_number = page_number + result                   
+                                    
+                    name.value = page_number
+                    #フォントを太文字に設定
+                    bold_font = Font(bold=True, size=16)
                     ##セルに太文字のフォントを適用
-                    #name.font = bold_font
-            page_number +=1
+                    name.font = bold_font
+            #page_number +=1
             in_count += 1
-
+    
+    page_number +=1
+    
     # 保存する場合
     wb.save("目次_finish.xlsx")
 
