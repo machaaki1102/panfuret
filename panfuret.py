@@ -908,14 +908,15 @@ if st.button('セットアップする'):
                     
                     #result = 1 if kasei_mo != 0 and kasei_mo % 1 == 0 else 0
                     #result += 1 
-                    page_number = page_number + result                   
+                    #page_number = page_number + result                   
                                     
                     name.value = page_number
                     #フォントを太文字に設定
                     bold_font = Font(bold=True, size=14)
                     ##セルに太文字のフォントを適用
                     name.font = bold_font
-                    result += 1 
+                    page_number += 1
+                     
             #page_number +=1
             in_count += 1
     
