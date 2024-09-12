@@ -837,7 +837,7 @@ if st.button('セットアップする'):
                     
                     name.value = page_number
                     # フォントを太文字に設定
-                    bold_font = Font(bold=True, size=16)
+                    bold_font = Font(bold=True, size=14)
                     # セルに太文字のフォントを適用
                     name.font = bold_font
 
@@ -879,7 +879,7 @@ if st.button('セットアップする'):
                     
                     name.value = page_number
                     # フォントを太文字に設定
-                    bold_font = Font(bold=True, size=16)
+                    bold_font = Font(bold=True, size=14)
                     # セルに太文字のフォントを適用
                     name.font = bold_font
 
@@ -912,7 +912,7 @@ if st.button('セットアップする'):
                                     
                     name.value = page_number
                     #フォントを太文字に設定
-                    bold_font = Font(bold=True, size=16)
+                    bold_font = Font(bold=True, size=14)
                     ##セルに太文字のフォントを適用
                     name.font = bold_font
             #page_number +=1
