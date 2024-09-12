@@ -829,8 +829,9 @@ if st.button('セットアップする'):
                     
                     #mo +=1
                     #page_number = page_number + ((mo + 1) % 2) 
+    
+                    result = 1 if mo != 0 and mo % 2 == 0 else 0
                     
-                    result = 1 if mo % 2 == 0 else 0
                     #st.write(result)
                     page_number = page_number + result                   
                     
@@ -877,8 +878,8 @@ if st.button('セットアップする'):
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     
                     
-                    result = 1 if kasei_mo % 3 == 0 else 0
-                    st.write(result)
+                    result = 1 if kasei_mo != 0 and kasei_mo % 3 == 0 else 0
+                    
                     page_number = page_number + result                   
                     
                     name.value = page_number
