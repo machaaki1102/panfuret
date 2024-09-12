@@ -862,11 +862,11 @@ if st.button('セットアップする'):
                     name.value = selected_fertilizer_kasei.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     
-                    kasei_mo +=1
+                    #kasei_mo +=1
                     result = 1 if kasei_mo % 3 == 0 else 0
-                    st.write(result)
+                    #st.write(result)
                     page_number = page_number + result
-                                        
+                    kasei_mo +=1                    
                     name.value = page_number
                     # フォントを太文字に設定
                     bold_font = Font(bold=True, size=16)
