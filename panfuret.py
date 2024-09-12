@@ -874,7 +874,7 @@ if st.button('セットアップする'):
                     #name.value = page_number
                     # フォントを太文字に設定
                     #bold_font = Font(bold=True, size=16)
-                    ##セルに太文字のフォントを適用
+                    ###セルに太文字のフォントを適用
                     #name.font = bold_font
             page_number +=1
             in_count += 1
