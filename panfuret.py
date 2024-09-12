@@ -857,12 +857,18 @@ if st.button('セットアップする'):
                 if selected_fertilizer_kasei_mo:
                     name.value = selected_fertilizer_kasei.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
-                    #name.value = page_number
+                    
+                    kasei_mo +=1
+                    page_number = page_number + ((kasei_mo + 1) % 3) 
+                    
+                    
+                    
+                    name.value = page_number
                     # フォントを太文字に設定
-                    #bold_font = Font(bold=True, size=16)
+                    bold_font = Font(bold=True, size=16)
                     # セルに太文字のフォントを適用
-                    #name.font = bold_font
-            page_number +=1
+                    name.font = bold_font
+            #page_number +=1
             in_count += 1
 
     for m in range(count_ekihi_mokuji):   
