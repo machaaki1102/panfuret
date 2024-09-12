@@ -827,15 +827,30 @@ if st.button('セットアップする'):
                     name.value = selected_fertilizer_mo.pop(0) 
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     
-                    mo +=1
-                    page_number = page_number + ((mo + 1) % 2) 
+                    #mo +=1
+                    #page_number = page_number + ((mo + 1) % 2) 
                     
+                    result = 1 if mo % 2 == 0 else 0
+                    #st.write(result)
+                    page_number = page_number + result                   
                     
                     name.value = page_number
                     # フォントを太文字に設定
                     bold_font = Font(bold=True, size=16)
                     # セルに太文字のフォントを適用
                     name.font = bold_font
+
+                    mo +=1       
+
+
+
+
+                    
+                    #name.value = page_number
+                    # フォントを太文字に設定
+                    #bold_font = Font(bold=True, size=16)
+                    # セルに太文字のフォントを適用
+                    #name.font = bold_font
 
             #page_number +=1
             in_count += 1
