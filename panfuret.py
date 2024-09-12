@@ -906,8 +906,8 @@ if st.button('セットアップする'):
                     name.value = selected_fertilizer_ekihi.pop(0)
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     
-                    result = 1 if kasei_mo != 0 and kasei_mo % 1 == 0 else 0
-                    
+                    #result = 1 if kasei_mo != 0 and kasei_mo % 1 == 0 else 0
+                    #result += 1 
                     page_number = page_number + result                   
                                     
                     name.value = page_number
@@ -915,6 +915,7 @@ if st.button('セットアップする'):
                     bold_font = Font(bold=True, size=14)
                     ##セルに太文字のフォントを適用
                     name.font = bold_font
+                    result += 1 
             #page_number +=1
             in_count += 1
     
