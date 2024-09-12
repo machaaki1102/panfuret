@@ -980,8 +980,8 @@ st.download_button(
 
 
 
-import win32com.client as win32
-import win32api
+#import win32com.client as win32
+#import win32api
 
 def save_excel_as_pdf(excel_path, pdf_path, row_start, row_end, col_start, col_end):
     excel = win32.Dispatch("Excel.Application")
@@ -1009,7 +1009,7 @@ def save_excel_as_pdf(excel_path, pdf_path, row_start, row_end, col_start, col_e
     excel.Quit()
 
 # 使用例
-save_excel_as_pdf("目次_finish.xlsx", "finish.pdf", 1, 25, 1, 10)  # A25:G100
+#ddsave_excel_as_pdf("目次_finish.xlsx", "finish.pdf", 1, 25, 1, 10)  # A25:G100
 
 #================
 with open('目次_finish.xlsx', 'rb') as file:
