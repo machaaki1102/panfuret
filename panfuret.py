@@ -244,8 +244,8 @@ if st.button('セットアップする'):
             ano = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset)
             ano.value = selected_row['容量②'].values[0]
             # 栽培適正
-            tekisei = ws.cell(row=n_base_row + row_offset + 12, column=n_base_column + col_offset - 6)
-            tekisei.value = selected_row['栽培適正'].values[0]
+            #tekisei = ws.cell(row=n_base_row + row_offset + 12, column=n_base_column + col_offset - 6)
+            #tekisei.value = selected_row['栽培適正'].values[0]
             # 品種
             hinshu = ws.cell(row=n_base_row + row_offset + 13, column=n_base_column + col_offset - 6)
             hinshu.value = selected_row['品種'].values[0]
@@ -858,7 +858,7 @@ if st.button('セットアップする'):
     for m in range(count_ekihi_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
-        
+
         if m == 0:
             #目次の題名を入れる。
             name_insert('液肥','B5E6A2')
