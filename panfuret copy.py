@@ -280,7 +280,7 @@ if st.button('セットアップする'):
                 original_img = PILImage.open(img_path)
                 
                 # 高解像度化（アップスケール）
-                upscale_factor = 2
+                upscale_factor = 4
                 new_width = original_img.width * upscale_factor
                 new_height = original_img.height * upscale_factor
 
