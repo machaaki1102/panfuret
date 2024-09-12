@@ -842,11 +842,6 @@ if st.button('セットアップする'):
                     name.font = bold_font
 
                     mo +=1       
-
-
-
-
-                    
                     #name.value = page_number
                     # フォントを太文字に設定
                     #bold_font = Font(bold=True, size=16)
