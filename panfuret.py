@@ -854,9 +854,8 @@ if st.button('セットアップする'):
 
             #page_number +=1
             in_count += 1
-    st.write(page_number)
+    
     page_number += 1
-    st.write(page_number)
 
     
     for m in range(count_kasei_mokuji):   
@@ -879,7 +878,7 @@ if st.button('セットアップする'):
                     
                     
                     result = 1 if kasei_mo % 3 == 0 else 0
-                    #st.write(result)
+                    st.write(result)
                     page_number = page_number + result                   
                     
                     name.value = page_number
