@@ -278,6 +278,14 @@ if st.button('セットアップする'):
                 
                 # Pillowで画像を開く
                 original_img = PILImage.open(img_path)
+                
+                # 高解像度化（アップスケール）
+                upscale_factor = 2
+                new_width = original_img.width * upscale_factor
+                new_height = original_img.height * upscale_factor
+
+                # アンチエイリアス補完で画像をリサイズ（高画質化）
+                original_img = original_img.resize((new_width, new_height), Image.ANTIALIAS)
 
                 # 画像のリサイズ
                 new_size = (190, 257)  # 新しいサイズを指定
