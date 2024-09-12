@@ -840,6 +840,9 @@ if st.button('セットアップする'):
             #page_number +=1
             in_count += 1
     st.write(page_number)
+    page_number += 1
+    st.write(page_number)
+    
     for m in range(count_kasei_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
@@ -859,10 +862,9 @@ if st.button('セットアップする'):
                     name = ws.cell(row=start_row + row_offset + i , column=start_col + col_offset + 4)
                     
                     kasei_mo +=1
-                    page_number = page_number + ((kasei_mo + 1) % 3) 
-                    
-                    
-                    
+                    result = 1 if kasei_mo % 3 == 0 else 0
+                    page_number = page_number + result
+                                        
                     name.value = page_number
                     # フォントを太文字に設定
                     bold_font = Font(bold=True, size=16)
