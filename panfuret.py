@@ -1001,7 +1001,7 @@ def save_excel_as_pdf(excel_path, pdf_path, row_start, row_end, col_start, col_e
     #ws.PageSetup.FitToPagesWide = 1  # 横1ページに収める
     #ws.PageSetup.FitToPagesTall = False  # 縦のページ数制限なし
     #ws.PageSetup.PrintTitleRows = "$1:$1"  # 1行目をタイトル行として繰り返し
-    #ws.PageSetup.Zoom = False  # 拡大・縮小はしない
+    ##ws.PageSetup.Zoom = False  # 拡大・縮小はしない
     
     # PDFとして保存
     ws.ExportAsFixedFormat(0, pdf_path)
