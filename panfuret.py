@@ -839,7 +839,7 @@ if st.button('セットアップする'):
 
             #page_number +=1
             in_count += 1
-    st.wrtite(page_number)
+    st.write(page_number)
     for m in range(count_kasei_mokuji):   
         row_offset = (in_count % 8) *3
         col_offset = (in_count // 8) *5        
