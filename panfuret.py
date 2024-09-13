@@ -357,7 +357,7 @@ if st.button('セットアップする'):
 
         # 13列ごとに垂直改ページを追加
         cols_per_page = 13  # 13列ごとに改ページ
-        for col in range(cols_per_page, col_end + 1, cols_per_page):
+        for col in range(cols_per_page, col_end , cols_per_page):
             ws.col_breaks.append(Break(id=col))
 
         # 印刷時の拡大・縮小を85%に設定
