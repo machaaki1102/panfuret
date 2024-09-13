@@ -1000,7 +1000,7 @@ if st.button('セットアップする'):
     row_start = 1
     row_end = 25
     col_start = 1  # A列は1
-    col_end = start_col + col_offset + 11
+    col_end = start_col + col_offset + 9
 
     # 列を文字列に変換
     col_start_letter = get_column_letter(col_start)
