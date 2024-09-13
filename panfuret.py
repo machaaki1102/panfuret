@@ -966,19 +966,32 @@ with col6:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
+# 3つのカラムを作成
+col7, col8, col9 = st.columns(3)
 
-#================
-with open('目次_finish.xlsx', 'rb') as file:
-        mokuji_ekihi = file.read()
+with col7:
 
-st.download_button(
-        label="Download Excel File＜目次＞",  # ボタンのラベル
-        data=mokuji_ekihi,  # ダウンロードするデータ
-        file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
-        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
-    )
+    with open('目次_finish.xlsx', 'rb') as file:
+            mokuji_ekihi = file.read()
 
+    st.download_button(
+            label="Download Excel File＜目次＞",  # ボタンのラベル
+            data=mokuji_ekihi,  # ダウンロードするデータ
+            file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+        )
 
+with col8:
+
+    with open('肥料パンフレット_表紙.xlsx', 'rb') as file:
+            panfu = file.read()
+
+    st.download_button(
+            label="Download Excel File＜表紙＞",  # ボタンのラベル
+            data=panfu,  # ダウンロードするデータ
+            file_name='肥料パンフレット_表紙.xlsx',  # ダウンロード時のファイル名
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+        )
 
 #import win32com.client as win32
 ##import win32api
