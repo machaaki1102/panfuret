@@ -741,7 +741,7 @@ if st.button('セットアップする'):
         row_start = 1
         row_end = 37
         col_start = 1  # A列は1
-        col_end = n_base_column + col_offset + 12
+        col_end = n_base_column + col_offset + 11
 
         # 列を文字列に変換
         col_start_letter = get_column_letter(col_start)
@@ -756,7 +756,7 @@ if st.button('セットアップする'):
             ws.col_breaks.append(Break(id=col))
 
         # 印刷時の拡大・縮小を85%に設定
-        ws.page_setup.scale = 80
+        ws.page_setup.scale = 78
 
 
 
