@@ -340,6 +340,9 @@ if st.button('セットアップする'):
 
 #=================================
         # 行数と列数を変数として定義
+        from openpyxl.utils import get_column_letter
+        from openpyxl.worksheet.pagebreak import Break
+        
         row_start = 1
         row_end = 42
         col_start = 1  # A列は1
@@ -359,7 +362,7 @@ if st.button('セットアップする'):
 
         # 印刷時の拡大・縮小を85%に設定
         ws.page_setup.scale = 85
-        
+
 #-==================================
 
         # 変更を保存する
