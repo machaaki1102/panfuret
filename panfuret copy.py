@@ -278,14 +278,6 @@ if st.button('セットアップする'):
                 
                 # Pillowで画像を開く
                 original_img = PILImage.open(img_path)
-                
-                # 高解像度化（アップスケール）
-                upscale_factor = 4
-                new_width = original_img.width * upscale_factor
-                new_height = original_img.height * upscale_factor
-
-                # アンチエイリアス補完で画像をリサイズ（高画質化）
-                original_img = original_img.resize((new_width, new_height), Image.ANTIALIAS)
 
                 # 画像のリサイズ
                 new_size = (190, 257)  # 新しいサイズを指定
@@ -924,7 +916,7 @@ if st.button('セットアップする'):
                     ##セルに太文字のフォントを適用
                     name.font = bold_font
                     page_number += 1
-                     
+
             #page_number +=1
             in_count += 1
     
@@ -974,14 +966,73 @@ with col6:
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
     )
 
+# 3つのカラムを作成
+col7, col8, col9 = st.columns(3)
 
-#================
-with open('目次_finish.xlsx', 'rb') as file:
-        mokuji_ekihi = file.read()
+with col7:
 
-st.download_button(
-        label="Download Excel File＜目次＞",  # ボタンのラベル
-        data=mokuji_ekihi,  # ダウンロードするデータ
-        file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
-        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
-    )
+    with open('目次_finish.xlsx', 'rb') as file:
+            mokuji_ekihi = file.read()
+
+    st.download_button(
+            label="Download Excel File＜目次＞",  # ボタンのラベル
+            data=mokuji_ekihi,  # ダウンロードするデータ
+            file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+        )
+
+with col8:
+
+    with open('肥料パンフレット_表紙.xlsx', 'rb') as file:
+            panfu = file.read()
+
+    st.download_button(
+            label="Download Excel File＜表紙＞",  # ボタンのラベル
+            data=panfu,  # ダウンロードするデータ
+            file_name='肥料パンフレット_表紙.xlsx',  # ダウンロード時のファイル名
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+        )
+
+#import win32com.client as win32
+##import win32api
+
+# def save_excel_as_pdf(excel_path, pdf_path, row_start, row_end, col_start, col_end):
+#     excel = win32.Dispatch("Excel.Application")
+#     excel.Visible = False
+#     wb = excel.Workbooks.Open(excel_path)
+#     ws = wb.Worksheets[0]
+    
+#     # 印刷範囲やレイアウトの設定
+#     #ws.PageSetup.PrintArea = "A1:G100"  # 印刷範囲を設定
+    
+#     # 行と列を数値で動的に印刷範囲を設定
+#     start_cell = ws.Cells(row_start, col_start).Address  # 開始セル
+#     end_cell = ws.Cells(row_end, col_end).Address  # 終了セル
+#     ws.PageSetup.PrintArea = f"{start_cell}:{end_cell}"  # 印刷範囲を設定
+    
+
+#     #ws.PageSetup.FitToPagesWide = 1  # 横1ページに収める
+#     #ws.PageSetup.FitToPagesTall = False  # 縦のページ数制限なし
+#     #ws.PageSetup.PrintTitleRows = "$1:$1"  # 1行目をタイトル行として繰り返し
+#     ##ws.PageSetup.Zoom = False  # 拡大・縮小はしない
+    
+#     # PDFとして保存
+#     ws.ExportAsFixedFormat(0, pdf_path)
+#     wb.Close(SaveChanges=False)
+#     excel.Quit()
+
+# # 使用例
+# #ddsave_excel_as_pdf("目次_finish.xlsx", "finish.pdf", 1, 25, 1, 10)  # A25:G100
+
+# #================
+# with open('目次_finish.xlsx', 'rb') as file:
+#         mokuji = file.read()
+
+# st.download_button(
+#         label="Download Excel File＜目次＞_PDF",  # ボタンのラベル
+#         data=mokuji,  # ダウンロードするデータ
+#         file_name='目次_finish.xlsx',  # ダウンロード時のファイル名
+#         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # MIMEタイプを指定
+#     )
+
+
