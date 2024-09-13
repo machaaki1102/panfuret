@@ -557,26 +557,7 @@ if st.button('セットアップする'):
 
             i = i + 1
 
-        row_start = 1
-        row_end = 50
-        col_start = 1  # A列は1
-        col_end = n_base_column + col_offset +13
-
-        # 列を文字列に変換
-        col_start_letter = get_column_letter(col_start)
-        col_end_letter = get_column_letter(col_end)
-
-        # print_areaを設定
-        ws.print_area = f'{col_start_letter}{row_start}:{col_end_letter}{row_end}'
-
-        # 13列ごとに垂直改ページを追加
-        cols_per_page = 13  # 13列ごとに改ページ
-        for col in range(cols_per_page, col_end + 1 , cols_per_page):
-            ws.col_breaks.append(Break(id=col))
-
-        # 印刷時の拡大・縮小を85%に設定
-        ws.page_setup.scale = 71
-
+            
         # 変更を保存する
         wb.save('kasei_tem_finish.xlsx')
 
