@@ -998,7 +998,7 @@ if st.button('セットアップする'):
 
 #================================================   
     row_start = 1
-    row_end = 37
+    row_end = 25
     col_start = 1  # A列は1
     col_end = start_col + col_offset + 11
 
@@ -1010,7 +1010,7 @@ if st.button('セットアップする'):
     ws.print_area = f'{col_start_letter}{row_start}:{col_end_letter}{row_end}'
 
     # 13列ごとに垂直改ページを追加
-    cols_per_page = 13  # 13列ごとに改ページ
+    cols_per_page = 10dd  # 13列ごとに改ページ
     for col in range(cols_per_page, col_end + 1 , cols_per_page):
         ws.col_breaks.append(Break(id=col))
 
