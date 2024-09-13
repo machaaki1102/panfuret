@@ -560,9 +560,9 @@ if st.button('セットアップする'):
 #======================================
 
         row_start = 1
-        row_end = 42
+        row_end = 50
         col_start = 1  # A列は1
-        col_end = n_base_column + col_offset + 12
+        col_end = n_base_column + col_offset + 11
 
         # 列を文字列に変換
         col_start_letter = get_column_letter(col_start)
