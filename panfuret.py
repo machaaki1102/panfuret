@@ -1015,7 +1015,7 @@ if st.button('セットアップする'):
         ws.col_breaks.append(Break(id=col))
 
     # 印刷時の拡大・縮小を85%に設定
-    ws.page_setup.scale = 78
+    ws.page_setup.scale = 105
 
 #===========================================
 
