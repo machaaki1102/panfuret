@@ -7,6 +7,9 @@ import os
 import tempfile
 from PIL import Image as PILImage  # PillowのImageクラスをインポート
 from openpyxl.drawing.image import Image as OpenpyxlImage
+from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.pagebreak import Break
+
 
 # タイトルをページの最上部に配置
 #st.title('🛠️パンフレット作成🛠️')
@@ -340,8 +343,8 @@ if st.button('セットアップする'):
 
 #=================================
         # 行数と列数を変数として定義
-        from openpyxl.utils import get_column_letter
-        from openpyxl.worksheet.pagebreak import Break
+#        from openpyxl.utils import get_column_letter
+#        from openpyxl.worksheet.pagebreak import Break
         
         row_start = 1
         row_end = 42
