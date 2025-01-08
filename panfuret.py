@@ -504,11 +504,11 @@ if st.button('セットアップする'):
             n.value = selected_row['Mg'].values[0]
 
             # Mn
-            n = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset + 9)
+            n = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset + 10)
             n.value = selected_row['Mn'].values[0]
             
             # B
-            n = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset + 9)
+            n = ws.cell(row=n_base_row + row_offset + 1, column=n_base_column + col_offset + 11)
             n.value = selected_row['B'].values[0]
 
             # その他
